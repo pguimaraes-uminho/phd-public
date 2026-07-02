@@ -1,0 +1,18 @@
+# Secrets — NEVER commit real API keys
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+
+# OS
+.DS_Store
+
+# Working notes / internal reports — not part of the replication package
+alteracoes_cenario_hibrido.txt
+EXPERIMENT_REPORT.txt

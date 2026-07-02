@@ -1,0 +1,15 @@
+A quick orientation on this airline booking data. The people here are travellers on flights - in aviation we call them passengers. The word 'customer' can be misleading because it sometimes covers corporate accounts or agencies that book without flying, so when a table clearly holds the individual who travels, think of them as a passenger.
+
+A booking is the centre of gravity in this schema. It exists because a passenger and a flight come together - a reservation of one on the other - and it also carries facts of its own, such as the seat, the fare class and when it was made. Note that being given its own reference number is just an identification convenience; conceptually a booking is still that coming-together of a passenger and a flight, not a free-standing object unrelated to them.
+
+Airlines carefully separate a specific aircraft - one physical airframe, identified by the unique marking painted on its tail - from its type or model, a family that many airframes share. This schema normalises the type out into its own table, so you have both the individual machine and the kind of machine it is.
+
+Every flight touches two airports in opposite operational roles: the one it leaves and the one it reaches. They are never interchangeable - gates, customs, baggage and timings all differ by role - so when the same airport concept is referenced more than once from a flight, expect two genuinely distinct roles rather than a duplicate.
+
+Here a flight's status is kept as a single current value recorded directly on the flight, unlike systems that keep a full history of status changes over time. It is still one of a small, controlled set of operational states.
+
+This design folds an airport's city and country directly onto the airport record, rather than treating place as a concept of its own. The city is still a locatable thing in its own right; it just is not separated out here.
+
+Columns that point at another table almost always encode a real-world relationship between things, not just a stored value: an airline operates a flight, a flight is flown by an aircraft, a flight leaves one airport and reaches another, an aircraft is of a certain type. It helps to read each such column as an active relationship and to ask which way it runs.
+
+Finally, a note on language. Practitioners have settled, precise words for things, and the raw column names here are often terse codes or abbreviations - carrier codes, surrogate ids, shortened field names - rather than those words. When you name a concept or property, reach for the term someone working the domain would actually use rather than echoing the literal column name.

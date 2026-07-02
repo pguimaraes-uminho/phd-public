@@ -1,0 +1,383 @@
+{
+  "scenario_name": "Scenario 2: LLM-2 (ERD + Data)",
+  "target_model": "ERD-A",
+  "n_runs": 3,
+  "metrics_mean": {
+    "hallucination_rate": 0.0,
+    "refinement_accuracy": 0.6667,
+    "over_merge_rate": 0.0,
+    "false_negatives": 0.0,
+    "curation_effort": 1.3958,
+    "under_merge_rate": 0.0,
+    "type_accuracy": 1.0,
+    "f1": 1.0,
+    "category_accuracy": 0.9697,
+    "precision": 1.0,
+    "false_positives": 0.0,
+    "proposed_provenance_completeness": 1.0,
+    "recall": 1.0,
+    "provenance_completeness": 1.0
+  },
+  "metrics_std": {
+    "hallucination_rate": 0.0,
+    "refinement_accuracy": 0.0163,
+    "over_merge_rate": 0.0,
+    "false_negatives": 0.0,
+    "curation_effort": 0.0821,
+    "under_merge_rate": 0.0,
+    "type_accuracy": 0.0,
+    "f1": 0.0,
+    "category_accuracy": 0.0429,
+    "precision": 0.0,
+    "false_positives": 0.0,
+    "proposed_provenance_completeness": 0.0,
+    "recall": 0.0,
+    "provenance_completeness": 0.0
+  },
+  "runs": [
+    {
+      "temperature": 0.2,
+      "time_seconds": 35.51,
+      "metrics": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "false_positives": 0,
+        "false_negatives": 0,
+        "curation_effort": 1.2812,
+        "over_merge_rate": 0.0,
+        "under_merge_rate": 0.0,
+        "hallucination_rate": 0.0,
+        "provenance_completeness": 1.0,
+        "proposed_provenance_completeness": 1.0,
+        "refinement_accuracy": 0.6552,
+        "type_accuracy": 1.0,
+        "category_accuracy": 1.0
+      }
+    },
+    {
+      "temperature": 0.2,
+      "time_seconds": 28.02,
+      "metrics": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "false_positives": 0,
+        "false_negatives": 0,
+        "curation_effort": 1.4688,
+        "over_merge_rate": 0.0,
+        "under_merge_rate": 0.0,
+        "hallucination_rate": 0.0,
+        "provenance_completeness": 1.0,
+        "proposed_provenance_completeness": 1.0,
+        "refinement_accuracy": 0.6897,
+        "type_accuracy": 1.0,
+        "category_accuracy": 1.0
+      }
+    },
+    {
+      "temperature": 0.2,
+      "time_seconds": 36.52,
+      "metrics": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "false_positives": 0,
+        "false_negatives": 0,
+        "curation_effort": 1.4375,
+        "over_merge_rate": 0.0,
+        "under_merge_rate": 0.0,
+        "hallucination_rate": 0.0,
+        "provenance_completeness": 1.0,
+        "proposed_provenance_completeness": 1.0,
+        "refinement_accuracy": 0.6552,
+        "type_accuracy": 1.0,
+        "category_accuracy": 0.9091
+      }
+    }
+  ],
+  "matching_audit": {
+    "true_positives": {
+      "entities": [
+        "Airline",
+        "Airplane",
+        "Airport",
+        "BaggageBelt",
+        "CrewMember",
+        "Customer",
+        "Flight",
+        "FlightStatus",
+        "Location",
+        "Seat",
+        "Status"
+      ],
+      "attributes": [
+        "Airline.airline_code",
+        "Airplane.airplane_model",
+        "Airplane.license_number",
+        "Airport.location_code",
+        "Airport.name",
+        "BaggageBelt.airport_code",
+        "BaggageBelt.belt_number",
+        "CrewMember.crew_license",
+        "CrewMember.role",
+        "Customer.surname",
+        "Flight.airport_arrival",
+        "Flight.airport_departure",
+        "FlightStatus.date",
+        "FlightStatus.flight_date",
+        "FlightStatus.flight_number",
+        "FlightStatus.hour",
+        "FlightStatus.status_code",
+        "Location.city",
+        "Seat.passport",
+        "Seat.seat_number",
+        "Status.status"
+      ],
+      "count": 32
+    },
+    "false_positives": {
+      "entities": [],
+      "attributes": [],
+      "count": 0
+    },
+    "false_negatives": {
+      "entities": [],
+      "attributes": [],
+      "count": 0
+    },
+    "refinements": {
+      "correct_matches": [
+        {
+          "source_entity": "Customer",
+          "gold_canonical": "Passenger",
+          "proposed_canonical": "Passenger"
+        },
+        {
+          "source_entity": "Seat",
+          "gold_canonical": "SeatAssignment",
+          "proposed_canonical": "SeatAssignment"
+        },
+        {
+          "source_entity": "Flight",
+          "gold_canonical": "Flight",
+          "proposed_canonical": "Flight"
+        },
+        {
+          "source_entity": "Airplane",
+          "gold_canonical": "Airplane",
+          "proposed_canonical": "Airplane"
+        },
+        {
+          "source_entity": "Location",
+          "gold_canonical": "Location",
+          "proposed_canonical": "Location"
+        },
+        {
+          "source_entity": "Status",
+          "gold_canonical": "FlightStatusType",
+          "proposed_canonical": "FlightStatusType"
+        },
+        {
+          "source_entity": "FlightStatus",
+          "gold_canonical": "FlightStatusEvent",
+          "proposed_canonical": "FlightStatusEvent"
+        },
+        {
+          "source_entity": "Airline",
+          "gold_canonical": "Airline",
+          "proposed_canonical": "Airline"
+        },
+        {
+          "source_entity": "Airport",
+          "gold_canonical": "Airport",
+          "proposed_canonical": "Airport"
+        },
+        {
+          "source_entity": "BaggageBelt",
+          "gold_canonical": "BaggageBelt",
+          "proposed_canonical": "BaggageBelt"
+        },
+        {
+          "source_entity": "CrewMember",
+          "gold_canonical": "CrewMember",
+          "proposed_canonical": "CrewMember"
+        },
+        {
+          "source_attribute": "Customer.passport",
+          "gold_canonical": "passportNumber",
+          "proposed_canonical": "passportNumber"
+        },
+        {
+          "source_attribute": "Customer.name",
+          "gold_canonical": "firstName",
+          "proposed_canonical": "firstName"
+        },
+        {
+          "source_attribute": "Customer.surname",
+          "gold_canonical": "lastName",
+          "proposed_canonical": "lastName"
+        },
+        {
+          "source_attribute": "Seat.seat_number",
+          "gold_canonical": "seatNumber",
+          "proposed_canonical": "seatNumber"
+        },
+        {
+          "source_attribute": "Flight.flight_number",
+          "gold_canonical": "flightNumber",
+          "proposed_canonical": "flightNumber"
+        },
+        {
+          "source_attribute": "Flight.flight_date",
+          "gold_canonical": "flightDate",
+          "proposed_canonical": "flightDate"
+        },
+        {
+          "source_attribute": "Flight.airline_code",
+          "gold_canonical": "operatedByAirline",
+          "proposed_canonical": "isOperatedByAirline"
+        },
+        {
+          "source_attribute": "Flight.airport_arrival",
+          "gold_canonical": "arrivesAtAirport",
+          "proposed_canonical": "arrivesAtAirport"
+        },
+        {
+          "source_attribute": "Flight.airport_departure",
+          "gold_canonical": "departsFromAirport",
+          "proposed_canonical": "departsFromAirport"
+        },
+        {
+          "source_attribute": "Flight.belt_number",
+          "gold_canonical": "usesBaggageBelt",
+          "proposed_canonical": "usesBaggageBelt"
+        },
+        {
+          "source_attribute": "Flight.license_number",
+          "gold_canonical": "operatedWithAirplane",
+          "proposed_canonical": "isFlownByAirplane"
+        },
+        {
+          "source_attribute": "Airplane.airplane_model",
+          "gold_canonical": "model",
+          "proposed_canonical": "model"
+        },
+        {
+          "source_attribute": "Location.location_code",
+          "gold_canonical": "locationCode",
+          "proposed_canonical": "locationCode"
+        },
+        {
+          "source_attribute": "Location.city",
+          "gold_canonical": "cityName",
+          "proposed_canonical": "cityName"
+        },
+        {
+          "source_attribute": "Status.status_code",
+          "gold_canonical": "statusCode",
+          "proposed_canonical": "statusCode"
+        },
+        {
+          "source_attribute": "FlightStatus.status_code",
+          "gold_canonical": "hasStatusType",
+          "proposed_canonical": "hasStatusType"
+        },
+        {
+          "source_attribute": "Airline.airline_code",
+          "gold_canonical": "airlineCode",
+          "proposed_canonical": "airlineCode"
+        },
+        {
+          "source_attribute": "Airline.name",
+          "gold_canonical": "airlineName",
+          "proposed_canonical": "airlineName"
+        },
+        {
+          "source_attribute": "Airport.airport_code",
+          "gold_canonical": "airportCode",
+          "proposed_canonical": "airportCode"
+        },
+        {
+          "source_attribute": "Airport.name",
+          "gold_canonical": "airportName",
+          "proposed_canonical": "airportName"
+        },
+        {
+          "source_attribute": "BaggageBelt.belt_number",
+          "gold_canonical": "beltNumber",
+          "proposed_canonical": "beltNumber"
+        },
+        {
+          "source_attribute": "BaggageBelt.airport_code",
+          "gold_canonical": "belongsToAirport",
+          "proposed_canonical": "belongsToAirport"
+        },
+        {
+          "source_attribute": "CrewMember.crew_license",
+          "gold_canonical": "crewLicense",
+          "proposed_canonical": "crewLicense"
+        },
+        {
+          "source_attribute": "CrewMember.role",
+          "gold_canonical": "crewRole",
+          "proposed_canonical": "crewRole"
+        }
+      ],
+      "incorrect_matches": [
+        {
+          "source_attribute": "Seat.passport",
+          "gold_canonical": "assignedToPassenger",
+          "proposed_canonical": "assignsPassenger"
+        },
+        {
+          "source_attribute": "Seat.flight_number",
+          "gold_canonical": "assignedOnFlight",
+          "proposed_canonical": "isAssignedToFlight"
+        },
+        {
+          "source_attribute": "Seat.flight_date",
+          "gold_canonical": "assignedOnFlight",
+          "proposed_canonical": "isAssignedToFlight"
+        },
+        {
+          "source_attribute": "Airplane.license_number",
+          "gold_canonical": "registration",
+          "proposed_canonical": "licenseNumber"
+        },
+        {
+          "source_attribute": "Status.status",
+          "gold_canonical": "statusLabel",
+          "proposed_canonical": "statusDescription"
+        },
+        {
+          "source_attribute": "FlightStatus.flight_number",
+          "gold_canonical": "concernsFlight",
+          "proposed_canonical": "pertainsToFlight"
+        },
+        {
+          "source_attribute": "FlightStatus.flight_date",
+          "gold_canonical": "concernsFlight",
+          "proposed_canonical": "pertainsToFlight"
+        },
+        {
+          "source_attribute": "FlightStatus.date",
+          "gold_canonical": "eventDate",
+          "proposed_canonical": "statusDate"
+        },
+        {
+          "source_attribute": "FlightStatus.hour",
+          "gold_canonical": "eventHour",
+          "proposed_canonical": "statusTime"
+        },
+        {
+          "source_attribute": "Airport.location_code",
+          "gold_canonical": "locatedInLocation",
+          "proposed_canonical": "isLocatedIn"
+        }
+      ],
+      "correct_count": 35,
+      "incorrect_count": 10
+    }
+  }
+}

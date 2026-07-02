@@ -1,0 +1,630 @@
+{
+  "cross_rule_based": {
+    "status": "success",
+    "time_seconds": 0.0,
+    "n_runs": 1,
+    "temperatures": [
+      0.0
+    ],
+    "metrics": {
+      "conflict_resolution_accuracy": 0.6154,
+      "unique_a_coverage": 1.0,
+      "unique_b_coverage": 1.0,
+      "integration_over_merge": 0.0,
+      "match_recall": 1.0,
+      "match_precision": 1.0,
+      "integration_under_merge": 0.0,
+      "match_f1": 1.0
+    },
+    "metrics_mean": {
+      "conflict_resolution_accuracy": 0.6154,
+      "unique_a_coverage": 1.0,
+      "unique_b_coverage": 1.0,
+      "integration_over_merge": 0.0,
+      "match_recall": 1.0,
+      "match_precision": 1.0,
+      "integration_under_merge": 0.0,
+      "match_f1": 1.0
+    },
+    "metrics_std": {
+      "conflict_resolution_accuracy": 0.0,
+      "unique_a_coverage": 0.0,
+      "unique_b_coverage": 0.0,
+      "integration_over_merge": 0.0,
+      "match_recall": 0.0,
+      "match_precision": 0.0,
+      "integration_under_merge": 0.0,
+      "match_f1": 0.0
+    },
+    "runs": [
+      {
+        "temperature": 0.0,
+        "time_seconds": 0.0,
+        "metrics": {
+          "match_precision": 1.0,
+          "match_recall": 1.0,
+          "match_f1": 1.0,
+          "integration_over_merge": 0.0,
+          "integration_under_merge": 0.0,
+          "unique_a_coverage": 1.0,
+          "unique_b_coverage": 1.0,
+          "conflict_resolution_accuracy": 0.6154
+        },
+        "proposed_plan": {
+          "alignments": [
+            {
+              "canonical": "Flight",
+              "erd_a": "Flight",
+              "erd_b": "Flight",
+              "score": 0.6527
+            },
+            {
+              "canonical": "Airline",
+              "erd_a": "Airline",
+              "erd_b": "Airline",
+              "score": 0.6326
+            },
+            {
+              "canonical": "Airport",
+              "erd_a": "Airport",
+              "erd_b": "Airport",
+              "score": 0.6299
+            },
+            {
+              "canonical": "Airplane",
+              "erd_a": "Airplane",
+              "erd_b": "Aircraft",
+              "score": 0.525
+            },
+            {
+              "canonical": "Passenger",
+              "erd_a": "Customer",
+              "erd_b": "Passenger",
+              "score": 0.4975
+            },
+            {
+              "canonical": "SeatAssignment",
+              "erd_a": "Seat",
+              "erd_b": "Booking",
+              "score": 0.4017
+            }
+          ],
+          "unique_to_a": [
+            "Location",
+            "FlightStatusType",
+            "FlightStatusEvent",
+            "BaggageBelt",
+            "CrewMember"
+          ],
+          "unique_to_b": [
+            "AirplaneType"
+          ],
+          "integrated_concepts": [
+            "Flight",
+            "Airline",
+            "Airport",
+            "Airplane",
+            "Passenger",
+            "SeatAssignment",
+            "Location",
+            "FlightStatusType",
+            "FlightStatusEvent",
+            "BaggageBelt",
+            "CrewMember",
+            "AirplaneType"
+          ]
+        }
+      }
+    ]
+  },
+  "cross_llm": {
+    "status": "success",
+    "time_seconds": 65.48,
+    "n_runs": 3,
+    "temperatures": [
+      0.2,
+      0.2,
+      0.2
+    ],
+    "metrics": {
+      "conflict_resolution_accuracy": 0.641,
+      "unique_a_coverage": 1.0,
+      "unique_b_coverage": 1.0,
+      "integration_over_merge": 0.0,
+      "match_recall": 0.8889,
+      "match_precision": 1.0,
+      "integration_under_merge": 0.1111,
+      "match_f1": 0.9394
+    },
+    "metrics_mean": {
+      "conflict_resolution_accuracy": 0.641,
+      "unique_a_coverage": 1.0,
+      "unique_b_coverage": 1.0,
+      "integration_over_merge": 0.0,
+      "match_recall": 0.8889,
+      "match_precision": 1.0,
+      "integration_under_merge": 0.1111,
+      "match_f1": 0.9394
+    },
+    "metrics_std": {
+      "conflict_resolution_accuracy": 0.0363,
+      "unique_a_coverage": 0.0,
+      "unique_b_coverage": 0.0,
+      "integration_over_merge": 0.0,
+      "match_recall": 0.0786,
+      "match_precision": 0.0,
+      "integration_under_merge": 0.0786,
+      "match_f1": 0.0429
+    },
+    "runs": [
+      {
+        "temperature": 0.2,
+        "time_seconds": 20.12,
+        "metrics": {
+          "match_precision": 1.0,
+          "match_recall": 1.0,
+          "match_f1": 1.0,
+          "integration_over_merge": 0.0,
+          "integration_under_merge": 0.0,
+          "unique_a_coverage": 1.0,
+          "unique_b_coverage": 1.0,
+          "conflict_resolution_accuracy": 0.6923
+        },
+        "proposed_plan": {
+          "alignments": [
+            {
+              "canonical": "Passenger",
+              "erd_a": "Customer",
+              "erd_b": "Passenger"
+            },
+            {
+              "canonical": "Booking",
+              "erd_a": "Seat",
+              "erd_b": "Booking"
+            },
+            {
+              "canonical": "Flight",
+              "erd_a": "Flight",
+              "erd_b": "Flight"
+            },
+            {
+              "canonical": "Airplane",
+              "erd_a": "Airplane",
+              "erd_b": "Aircraft"
+            },
+            {
+              "canonical": "Airline",
+              "erd_a": "Airline",
+              "erd_b": "Airline"
+            },
+            {
+              "canonical": "Airport",
+              "erd_a": "Airport",
+              "erd_b": "Airport"
+            }
+          ],
+          "unique_to_a": [
+            "Location",
+            "FlightStatusType",
+            "FlightStatusEvent",
+            "BaggageBelt",
+            "CrewMember"
+          ],
+          "unique_to_b": [
+            "AirplaneType"
+          ],
+          "integrated_concepts": [
+            "Passenger",
+            "Booking",
+            "Flight",
+            "Airplane",
+            "Airline",
+            "Airport",
+            "Location",
+            "FlightStatusType",
+            "FlightStatusEvent",
+            "BaggageBelt",
+            "CrewMember",
+            "AirplaneType"
+          ]
+        }
+      },
+      {
+        "temperature": 0.2,
+        "time_seconds": 11.25,
+        "metrics": {
+          "match_precision": 1.0,
+          "match_recall": 0.8333,
+          "match_f1": 0.9091,
+          "integration_over_merge": 0.0,
+          "integration_under_merge": 0.1667,
+          "unique_a_coverage": 1.0,
+          "unique_b_coverage": 1.0,
+          "conflict_resolution_accuracy": 0.6154
+        },
+        "proposed_plan": {
+          "alignments": [
+            {
+              "canonical": "Passenger",
+              "erd_a": "Customer",
+              "erd_b": "Passenger"
+            },
+            {
+              "canonical": "Flight",
+              "erd_a": "Flight",
+              "erd_b": "Flight"
+            },
+            {
+              "canonical": "Airplane",
+              "erd_a": "Airplane",
+              "erd_b": "Aircraft"
+            },
+            {
+              "canonical": "Airline",
+              "erd_a": "Airline",
+              "erd_b": "Airline"
+            },
+            {
+              "canonical": "Airport",
+              "erd_a": "Airport",
+              "erd_b": "Airport"
+            }
+          ],
+          "unique_to_a": [
+            "SeatAssignment",
+            "Location",
+            "FlightStatusType",
+            "FlightStatusEvent",
+            "BaggageBelt",
+            "CrewMember"
+          ],
+          "unique_to_b": [
+            "Booking",
+            "AirplaneType"
+          ],
+          "integrated_concepts": [
+            "Passenger",
+            "Flight",
+            "Airplane",
+            "Airline",
+            "Airport",
+            "SeatAssignment",
+            "Location",
+            "FlightStatusType",
+            "FlightStatusEvent",
+            "BaggageBelt",
+            "CrewMember",
+            "Booking",
+            "AirplaneType"
+          ]
+        }
+      },
+      {
+        "temperature": 0.2,
+        "time_seconds": 14.09,
+        "metrics": {
+          "match_precision": 1.0,
+          "match_recall": 0.8333,
+          "match_f1": 0.9091,
+          "integration_over_merge": 0.0,
+          "integration_under_merge": 0.1667,
+          "unique_a_coverage": 1.0,
+          "unique_b_coverage": 1.0,
+          "conflict_resolution_accuracy": 0.6154
+        },
+        "proposed_plan": {
+          "alignments": [
+            {
+              "canonical": "Airline",
+              "erd_a": "Airline",
+              "erd_b": "Airline"
+            },
+            {
+              "canonical": "Airplane",
+              "erd_a": "Airplane",
+              "erd_b": "Aircraft"
+            },
+            {
+              "canonical": "Airport",
+              "erd_a": "Airport",
+              "erd_b": "Airport"
+            },
+            {
+              "canonical": "Flight",
+              "erd_a": "Flight",
+              "erd_b": "Flight"
+            },
+            {
+              "canonical": "Passenger",
+              "erd_a": "Customer",
+              "erd_b": "Passenger"
+            }
+          ],
+          "unique_to_a": [
+            "BaggageBelt",
+            "CrewMember",
+            "FlightStatusEvent",
+            "FlightStatusType",
+            "Location",
+            "SeatAssignment"
+          ],
+          "unique_to_b": [
+            "AirplaneType",
+            "Booking"
+          ],
+          "integrated_concepts": [
+            "Airline",
+            "Airplane",
+            "AirplaneType",
+            "Airport",
+            "BaggageBelt",
+            "Booking",
+            "CrewMember",
+            "Flight",
+            "FlightStatusEvent",
+            "FlightStatusType",
+            "Location",
+            "Passenger",
+            "SeatAssignment"
+          ]
+        }
+      }
+    ]
+  },
+  "cross_llm_brief": {
+    "status": "success",
+    "time_seconds": 65.28,
+    "n_runs": 3,
+    "temperatures": [
+      0.2,
+      0.2,
+      0.2
+    ],
+    "metrics": {
+      "conflict_resolution_accuracy": 0.6667,
+      "unique_a_coverage": 1.0,
+      "unique_b_coverage": 1.0,
+      "integration_over_merge": 0.0,
+      "match_recall": 0.9444,
+      "match_precision": 1.0,
+      "integration_under_merge": 0.0556,
+      "match_f1": 0.9697
+    },
+    "metrics_mean": {
+      "conflict_resolution_accuracy": 0.6667,
+      "unique_a_coverage": 1.0,
+      "unique_b_coverage": 1.0,
+      "integration_over_merge": 0.0,
+      "match_recall": 0.9444,
+      "match_precision": 1.0,
+      "integration_under_merge": 0.0556,
+      "match_f1": 0.9697
+    },
+    "metrics_std": {
+      "conflict_resolution_accuracy": 0.0363,
+      "unique_a_coverage": 0.0,
+      "unique_b_coverage": 0.0,
+      "integration_over_merge": 0.0,
+      "match_recall": 0.0786,
+      "match_precision": 0.0,
+      "integration_under_merge": 0.0786,
+      "match_f1": 0.0429
+    },
+    "runs": [
+      {
+        "temperature": 0.2,
+        "time_seconds": 14.66,
+        "metrics": {
+          "match_precision": 1.0,
+          "match_recall": 0.8333,
+          "match_f1": 0.9091,
+          "integration_over_merge": 0.0,
+          "integration_under_merge": 0.1667,
+          "unique_a_coverage": 1.0,
+          "unique_b_coverage": 1.0,
+          "conflict_resolution_accuracy": 0.6154
+        },
+        "proposed_plan": {
+          "alignments": [
+            {
+              "canonical": "Passenger",
+              "erd_a": "Customer",
+              "erd_b": "Passenger"
+            },
+            {
+              "canonical": "Flight",
+              "erd_a": "Flight",
+              "erd_b": "Flight"
+            },
+            {
+              "canonical": "Airplane",
+              "erd_a": "Airplane",
+              "erd_b": "Aircraft"
+            },
+            {
+              "canonical": "Airline",
+              "erd_a": "Airline",
+              "erd_b": "Airline"
+            },
+            {
+              "canonical": "Airport",
+              "erd_a": "Airport",
+              "erd_b": "Airport"
+            }
+          ],
+          "unique_to_a": [
+            "SeatAssignment",
+            "Location",
+            "FlightStatusType",
+            "FlightStatusEvent",
+            "BaggageBelt",
+            "CrewMember"
+          ],
+          "unique_to_b": [
+            "Booking",
+            "AirplaneType"
+          ],
+          "integrated_concepts": [
+            "Airline",
+            "Airplane",
+            "AirplaneType",
+            "Airport",
+            "BaggageBelt",
+            "Booking",
+            "CrewMember",
+            "Flight",
+            "FlightStatusEvent",
+            "FlightStatusType",
+            "Location",
+            "Passenger",
+            "SeatAssignment"
+          ]
+        }
+      },
+      {
+        "temperature": 0.2,
+        "time_seconds": 18.24,
+        "metrics": {
+          "match_precision": 1.0,
+          "match_recall": 1.0,
+          "match_f1": 1.0,
+          "integration_over_merge": 0.0,
+          "integration_under_merge": 0.0,
+          "unique_a_coverage": 1.0,
+          "unique_b_coverage": 1.0,
+          "conflict_resolution_accuracy": 0.6923
+        },
+        "proposed_plan": {
+          "alignments": [
+            {
+              "canonical": "Passenger",
+              "erd_a": "Customer",
+              "erd_b": "Passenger"
+            },
+            {
+              "canonical": "Flight",
+              "erd_a": "Flight",
+              "erd_b": "Flight"
+            },
+            {
+              "canonical": "Airline",
+              "erd_a": "Airline",
+              "erd_b": "Airline"
+            },
+            {
+              "canonical": "Airport",
+              "erd_a": "Airport",
+              "erd_b": "Airport"
+            },
+            {
+              "canonical": "Airplane",
+              "erd_a": "Airplane",
+              "erd_b": "Aircraft"
+            },
+            {
+              "canonical": "Booking",
+              "erd_a": "Seat",
+              "erd_b": "Booking"
+            }
+          ],
+          "unique_to_a": [
+            "Location",
+            "FlightStatusType",
+            "FlightStatusEvent",
+            "BaggageBelt",
+            "CrewMember"
+          ],
+          "unique_to_b": [
+            "AirplaneType"
+          ],
+          "integrated_concepts": [
+            "Passenger",
+            "Flight",
+            "Airline",
+            "Airport",
+            "Airplane",
+            "Booking",
+            "Location",
+            "FlightStatusType",
+            "FlightStatusEvent",
+            "BaggageBelt",
+            "CrewMember",
+            "AirplaneType"
+          ]
+        }
+      },
+      {
+        "temperature": 0.2,
+        "time_seconds": 12.36,
+        "metrics": {
+          "match_precision": 1.0,
+          "match_recall": 1.0,
+          "match_f1": 1.0,
+          "integration_over_merge": 0.0,
+          "integration_under_merge": 0.0,
+          "unique_a_coverage": 1.0,
+          "unique_b_coverage": 1.0,
+          "conflict_resolution_accuracy": 0.6923
+        },
+        "proposed_plan": {
+          "alignments": [
+            {
+              "canonical": "Passenger",
+              "erd_a": "Customer",
+              "erd_b": "Passenger"
+            },
+            {
+              "canonical": "Booking",
+              "erd_a": "Seat",
+              "erd_b": "Booking"
+            },
+            {
+              "canonical": "Flight",
+              "erd_a": "Flight",
+              "erd_b": "Flight"
+            },
+            {
+              "canonical": "Airplane",
+              "erd_a": "Airplane",
+              "erd_b": "Aircraft"
+            },
+            {
+              "canonical": "Airline",
+              "erd_a": "Airline",
+              "erd_b": "Airline"
+            },
+            {
+              "canonical": "Airport",
+              "erd_a": "Airport",
+              "erd_b": "Airport"
+            }
+          ],
+          "unique_to_a": [
+            "Location",
+            "FlightStatusType",
+            "FlightStatusEvent",
+            "BaggageBelt",
+            "CrewMember"
+          ],
+          "unique_to_b": [
+            "AirplaneType"
+          ],
+          "integrated_concepts": [
+            "Passenger",
+            "Booking",
+            "Flight",
+            "Airplane",
+            "Airline",
+            "Airport",
+            "Location",
+            "FlightStatusType",
+            "FlightStatusEvent",
+            "BaggageBelt",
+            "CrewMember",
+            "AirplaneType"
+          ]
+        }
+      }
+    ]
+  }
+}

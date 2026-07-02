@@ -1,0 +1,88 @@
+{
+  "_comment": "ERD-B: a second, independently designed airlines schema (reservations/operations perspective). Deliberately heterogeneous vs ERD-A (ground_truth_erd.json) in naming, granularity, structure, identity, and coverage, to exercise cross-ERD integration.",
+  "entities": [
+    {
+      "name": "Passenger",
+      "primary_key": ["pax_id"],
+      "attributes": [
+        { "name": "pax_id", "data_type": "INTEGER", "is_primary_key": true, "is_foreign_key": false, "nullable": false },
+        { "name": "full_name", "data_type": "VARCHAR(200)", "is_primary_key": false, "is_foreign_key": false, "nullable": false },
+        { "name": "passport_no", "data_type": "VARCHAR(50)", "is_primary_key": false, "is_foreign_key": false, "nullable": false },
+        { "name": "email", "data_type": "VARCHAR(150)", "is_primary_key": false, "is_foreign_key": false, "nullable": true }
+      ]
+    },
+    {
+      "name": "Booking",
+      "primary_key": ["booking_ref"],
+      "attributes": [
+        { "name": "booking_ref", "data_type": "VARCHAR(12)", "is_primary_key": true, "is_foreign_key": false, "nullable": false },
+        { "name": "pax_id", "data_type": "INTEGER", "is_primary_key": false, "is_foreign_key": true, "references": "Passenger.pax_id", "nullable": false },
+        { "name": "flight_id", "data_type": "INTEGER", "is_primary_key": false, "is_foreign_key": true, "references": "Flight.flight_id", "nullable": false },
+        { "name": "seat", "data_type": "VARCHAR(10)", "is_primary_key": false, "is_foreign_key": false, "nullable": true },
+        { "name": "fare_class", "data_type": "VARCHAR(20)", "is_primary_key": false, "is_foreign_key": false, "nullable": false },
+        { "name": "booking_date", "data_type": "DATE", "is_primary_key": false, "is_foreign_key": false, "nullable": false }
+      ]
+    },
+    {
+      "name": "Flight",
+      "primary_key": ["flight_id"],
+      "attributes": [
+        { "name": "flight_id", "data_type": "INTEGER", "is_primary_key": true, "is_foreign_key": false, "nullable": false },
+        { "name": "flight_no", "data_type": "VARCHAR(20)", "is_primary_key": false, "is_foreign_key": false, "nullable": false },
+        { "name": "dep_datetime", "data_type": "TIMESTAMP", "is_primary_key": false, "is_foreign_key": false, "nullable": false },
+        { "name": "arr_datetime", "data_type": "TIMESTAMP", "is_primary_key": false, "is_foreign_key": false, "nullable": false },
+        { "name": "carrier_code", "data_type": "VARCHAR(10)", "is_primary_key": false, "is_foreign_key": true, "references": "Airline.carrier_code", "nullable": false },
+        { "name": "aircraft_reg", "data_type": "VARCHAR(50)", "is_primary_key": false, "is_foreign_key": true, "references": "Aircraft.aircraft_reg", "nullable": false },
+        { "name": "origin_iata", "data_type": "VARCHAR(10)", "is_primary_key": false, "is_foreign_key": true, "references": "Airport.iata_code", "nullable": false },
+        { "name": "dest_iata", "data_type": "VARCHAR(10)", "is_primary_key": false, "is_foreign_key": true, "references": "Airport.iata_code", "nullable": false },
+        { "name": "status", "data_type": "VARCHAR(30)", "is_primary_key": false, "is_foreign_key": false, "nullable": false }
+      ]
+    },
+    {
+      "name": "Airline",
+      "primary_key": ["carrier_code"],
+      "attributes": [
+        { "name": "carrier_code", "data_type": "VARCHAR(10)", "is_primary_key": true, "is_foreign_key": false, "nullable": false },
+        { "name": "carrier_name", "data_type": "VARCHAR(100)", "is_primary_key": false, "is_foreign_key": false, "nullable": false },
+        { "name": "country", "data_type": "VARCHAR(80)", "is_primary_key": false, "is_foreign_key": false, "nullable": false }
+      ]
+    },
+    {
+      "name": "Aircraft",
+      "primary_key": ["aircraft_reg"],
+      "attributes": [
+        { "name": "aircraft_reg", "data_type": "VARCHAR(50)", "is_primary_key": true, "is_foreign_key": false, "nullable": false },
+        { "name": "type_code", "data_type": "VARCHAR(20)", "is_primary_key": false, "is_foreign_key": true, "references": "AircraftType.type_code", "nullable": false },
+        { "name": "seats_capacity", "data_type": "INTEGER", "is_primary_key": false, "is_foreign_key": false, "nullable": false }
+      ]
+    },
+    {
+      "name": "AircraftType",
+      "primary_key": ["type_code"],
+      "attributes": [
+        { "name": "type_code", "data_type": "VARCHAR(20)", "is_primary_key": true, "is_foreign_key": false, "nullable": false },
+        { "name": "model_name", "data_type": "VARCHAR(100)", "is_primary_key": false, "is_foreign_key": false, "nullable": false },
+        { "name": "manufacturer", "data_type": "VARCHAR(100)", "is_primary_key": false, "is_foreign_key": false, "nullable": false }
+      ]
+    },
+    {
+      "name": "Airport",
+      "primary_key": ["iata_code"],
+      "attributes": [
+        { "name": "iata_code", "data_type": "VARCHAR(10)", "is_primary_key": true, "is_foreign_key": false, "nullable": false },
+        { "name": "airport_name", "data_type": "VARCHAR(120)", "is_primary_key": false, "is_foreign_key": false, "nullable": false },
+        { "name": "city", "data_type": "VARCHAR(100)", "is_primary_key": false, "is_foreign_key": false, "nullable": false },
+        { "name": "country", "data_type": "VARCHAR(80)", "is_primary_key": false, "is_foreign_key": false, "nullable": false }
+      ]
+    }
+  ],
+  "relationships": [
+    { "from_entity": "Passenger", "to_entity": "Booking", "from_cardinality": "1", "to_cardinality": "0..N", "fk_attribute": "pax_id" },
+    { "from_entity": "Flight", "to_entity": "Booking", "from_cardinality": "1", "to_cardinality": "0..N", "fk_attribute": "flight_id" },
+    { "from_entity": "Airline", "to_entity": "Flight", "from_cardinality": "1", "to_cardinality": "0..N", "fk_attribute": "carrier_code" },
+    { "from_entity": "Aircraft", "to_entity": "Flight", "from_cardinality": "1", "to_cardinality": "0..N", "fk_attribute": "aircraft_reg" },
+    { "from_entity": "Airport", "to_entity": "Flight", "from_cardinality": "1", "to_cardinality": "0..N", "fk_attribute": "origin_iata" },
+    { "from_entity": "Airport", "to_entity": "Flight", "from_cardinality": "1", "to_cardinality": "0..N", "fk_attribute": "dest_iata" },
+    { "from_entity": "AircraftType", "to_entity": "Aircraft", "from_cardinality": "1", "to_cardinality": "0..N", "fk_attribute": "type_code" }
+  ]
+}

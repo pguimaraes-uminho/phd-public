@@ -1,0 +1,11 @@
+[
+  "A flight number denotes a scheduled service that recurs over time; each date on which that service runs is a distinct operated flight, with its own aircraft, crew and outcome.",
+  "Each flight is operated by exactly one airline and uses exactly one aircraft.",
+  "Each flight has a departure airport and an arrival airport; these are distinct operational roles, because gates, timings and handling differ between them.",
+  "An aircraft belongs to a model, and many aircraft can share the same model.",
+  "A flight's operational status is one value from a controlled set of states (for example on-time, delayed, cancelled, boarding, departed, arrived); the status changes over time, and each change is recorded with its date and time.",
+  "Each airport is located in a city.",
+  "Baggage for a flight is handled on a baggage belt, and each baggage belt belongs to an airport.",
+  "A person can travel on many flights over time, and each flight carries many people; on a given flight, each seat is occupied by at most one traveller.",
+  "Crew members are assigned to flights: a flight has several crew members and a crew member works on many flights over time. Each crew member has a role."
+]

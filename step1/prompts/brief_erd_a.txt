@@ -1,0 +1,17 @@
+A quick orientation on this airline data before you map it. The people in these records are travellers on flights - in aviation we call them passengers. Be a little wary of the word 'customer': in airline systems that can also mean a corporate account or travel agency that books but never flies, so when a table clearly holds the individual who actually travels, think of them as a passenger.
+
+Mind the word 'flight'. A flight number such as AA100 names a scheduled service that repeats day after day; that same number on a particular date is one concrete operated flight, with its own aircraft, crew and outcome. When something is identified by flight number together with a date, it is really the dated, operated instance you are looking at, not the abstract schedule.
+
+Every flight touches two airports that play opposite operational roles - the one it leaves and the one it reaches. They are never interchangeable: gates, customs, baggage handling and timings all differ by role. So if you see the same airport concept referenced more than once from a flight, expect genuinely different roles rather than an accidental duplicate.
+
+Some associations in this domain carry facts of their own, and operations staff treat those as things in their own right, not as mere links. A seat allocation, for instance, is not just 'this person on this flight' - it records which seat, and the assignment itself is what people reason about. A flight's status is similar: it is something that happens at a moment in time, not a static label hanging off the flight.
+
+Other associations really are just bridges with nothing of their own to record - for example, which crew members worked which flight. There is no extra data on the link itself; it is a plain many-to-many between two populations.
+
+A flight's status value (departed, delayed, cancelled, on time, ...) is drawn from a small, controlled set that is reused across thousands of flights. It is worth separating the kind of status (the reusable classifier) from a particular status happening to a particular flight at a particular time (the occurrence).
+
+An airport physically sits in a place - a city. Some designs keep that place as a concept of its own, others fold it into the airport. Either way the city is a locatable thing distinct from the airport facility that stands in it.
+
+Columns that point at another table almost always encode a real-world relationship between things, not just a stored value: an airline operates a flight, a flight uses a baggage belt, a flight leaves one airport and reaches another, an aircraft flies a flight. It helps to read each such column as an active relationship and to ask which way it runs.
+
+Finally, a note on language. Practitioners have settled, precise words for things, and the raw column names here are often terse codes or abbreviations rather than those words. When you name a concept or a property, reach for the term a controller, gate agent or dispatcher would actually use, and let a single packed column name unfold into the distinct facts it really carries.

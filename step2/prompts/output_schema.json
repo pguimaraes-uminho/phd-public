@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/schema/llm-mapping-output-metrics.json",
+  "title": "LLM schema-to-ontology mapping output (metrics-only)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["concepts", "relations"],
+  "properties": {
+    "concepts": { "type": "array", "items": { "$ref": "#/$defs/concept" } },
+    "relations": { "type": "array", "items": { "$ref": "#/$defs/relation" } }
+  },
+  "$defs": {
+    "refinement": {
+      "type": "string",
+      "enum": ["rename", "reification", "role_disambiguation", "interpretation"]
+    },
+    "concept": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["canonical_name", "ontological_category", "source_entity", "attributes"],
+      "properties": {
+        "canonical_name": { "type": "string", "minLength": 1 },
+        "ontological_category": { "type": "string", "enum": ["kind", "relator", "category"] },
+        "source_entity": { "type": "string", "minLength": 1 },
+        "refinement": { "$ref": "#/$defs/refinement" },
+        "attributes": { "type": "array", "items": { "$ref": "#/$defs/attribute" } }
+      }
+    },
+    "attribute": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source", "maps_to"],
+      "properties": {
+        "source": { "type": "string", "pattern": "^[^.]+\\.[^.]+$" },
+        "refinement": { "$ref": "#/$defs/refinement" },
+        "maps_to": {
+          "oneOf": [
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["type", "canonical_name", "role"],
+              "properties": {
+                "type": { "const": "property" },
+                "canonical_name": { "type": "string", "minLength": 1 },
+                "role": { "type": "string", "enum": ["identifier", "descriptive"] }
+              }
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["type", "relation", "target_concept"],
+              "properties": {
+                "type": { "const": "relation_role" },
+                "relation": { "type": "string", "minLength": 1 },
+                "target_concept": { "type": "string", "minLength": 1 }
+              }
+            }
+          ]
+        }
+      }
+    },
+    "relation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["canonical_name", "domain", "range"],
+      "properties": {
+        "canonical_name": { "type": "string", "minLength": 1 },
+        "domain": { "type": "string", "minLength": 1 },
+        "range": { "type": "string", "minLength": 1 },
+        "refinement": { "$ref": "#/$defs/refinement" }
+      }
+    }
+  }
+}

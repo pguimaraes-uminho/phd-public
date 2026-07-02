@@ -1,0 +1,27 @@
+You map a relational schema to a domain ontology. Output ONLY one JSON object valid against the contract below: no prose, no markdown, no comments. Map every entity, attribute and relationship exactly once.
+
+TYPE RULES (decide maps_to.type for every column from is_foreign_key)
+- is_foreign_key=true  -> maps_to.type "relation_role". NEVER "property".
+- is_foreign_key=false -> maps_to.type "property", role: identifier if primary key, else descriptive.
+- entity -> concept (ontological_category: kind | relator | category).
+- entity that is a pure junction (no non-key attributes) -> a plain relation, not a concept.
+- junction table WITH its own non-key attribute(s) -> concept, ontological_category "relator".
+- two FKs to the same target -> two distinct relations.
+- one attribute entry per source column: "source" is always a single "Entity.column" (never combine columns). A composite FK spanning several columns produces one entry per column, each a relation_role sharing the same relation name and target_concept.
+
+NAMING RULES
+- concept canonical_name: the clearest PascalCase domain term for what the entity denotes (rename source names to domain terms where one is clearer, e.g. a customer who flies -> Passenger).
+- property identifier: the canonical domain term for what the column identifies in camelCase (e.g. a registration number -> registration); do not output a bare generic word ("identifier","code").
+- property descriptive: the clearest camelCase domain term for the column's meaning.
+- relation_role: a camelCase verb phrase naming the relationship and embedding the target concept; never the raw column name, never a bare noun.
+
+REFINEMENT
+- set "refinement" to rename | reification | role_disambiguation | interpretation on any concept, attribute or relation where one applies; omit it otherwise.
+
+CONTRACT
+{"concepts":[{"canonical_name":"","ontological_category":"","source_entity":"","refinement":"rename","attributes":[{"source":"Entity.col","maps_to":{"type":"property","canonical_name":"","role":"identifier"},"refinement":"rename"},{"source":"Entity.fk","maps_to":{"type":"relation_role","relation":"","target_concept":""}}]}],"relations":[{"canonical_name":"","domain":"","range":""}]}
+
+Self-check before output: every is_foreign_key=true is a relation_role with a verb-phrase name embedding its target; every "source" is a single Entity.column (split any combined columns); fix any violation.
+
+INPUT
+{{EVIDENCE_BLOCK}}

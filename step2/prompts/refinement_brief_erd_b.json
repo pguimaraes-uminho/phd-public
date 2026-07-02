@@ -1,0 +1,10 @@
+[
+  "A person can hold many bookings over time.",
+  "A booking is a reservation of one person on one flight; it records the chosen seat, the fare class and the date it was made, and it is given its own booking reference.",
+  "Each flight is operated by exactly one airline and uses exactly one aircraft, and has a departure airport and an arrival airport, which are distinct operational roles.",
+  "A flight has a scheduled departure date-time and a scheduled arrival date-time.",
+  "A flight has a single current operational status from a controlled set of states (for example scheduled, delayed, cancelled, departed, arrived).",
+  "Each aircraft has a type, and many aircraft can share the same type; each aircraft also has its own passenger capacity.",
+  "Each airport has a city and a country.",
+  "Each airline has a name and a home country."
+]

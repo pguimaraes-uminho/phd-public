@@ -1,0 +1,475 @@
+{
+  "entities": [
+    {
+      "name": "Customer",
+      "primary_key": [
+        "passport"
+      ],
+      "attributes": [
+        {
+          "name": "passport",
+          "data_type": "VARCHAR(50)",
+          "is_primary_key": true,
+          "is_foreign_key": false,
+          "nullable": false
+        },
+        {
+          "name": "name",
+          "data_type": "VARCHAR(100)",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "nullable": false
+        },
+        {
+          "name": "surname",
+          "data_type": "VARCHAR(100)",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "nullable": false
+        }
+      ]
+    },
+    {
+      "name": "Seat",
+      "primary_key": [
+        "passport",
+        "flight_number",
+        "flight_date"
+      ],
+      "attributes": [
+        {
+          "name": "passport",
+          "data_type": "VARCHAR(50)",
+          "is_primary_key": true,
+          "is_foreign_key": true,
+          "references": "Customer.passport",
+          "nullable": false
+        },
+        {
+          "name": "flight_number",
+          "data_type": "VARCHAR(20)",
+          "is_primary_key": true,
+          "is_foreign_key": true,
+          "references": "Flight.flight_number",
+          "nullable": false
+        },
+        {
+          "name": "flight_date",
+          "data_type": "DATE",
+          "is_primary_key": true,
+          "is_foreign_key": true,
+          "references": "Flight.flight_date",
+          "nullable": false
+        },
+        {
+          "name": "seat_number",
+          "data_type": "VARCHAR(10)",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "nullable": false
+        }
+      ]
+    },
+    {
+      "name": "Flight",
+      "primary_key": [
+        "flight_number",
+        "flight_date"
+      ],
+      "attributes": [
+        {
+          "name": "flight_number",
+          "data_type": "VARCHAR(20)",
+          "is_primary_key": true,
+          "is_foreign_key": false,
+          "nullable": false
+        },
+        {
+          "name": "flight_date",
+          "data_type": "DATE",
+          "is_primary_key": true,
+          "is_foreign_key": false,
+          "nullable": false
+        },
+        {
+          "name": "airline_code",
+          "data_type": "VARCHAR(10)",
+          "is_primary_key": false,
+          "is_foreign_key": true,
+          "references": "Airline.airline_code",
+          "nullable": false
+        },
+        {
+          "name": "airport_arrival",
+          "data_type": "VARCHAR(10)",
+          "is_primary_key": false,
+          "is_foreign_key": true,
+          "references": "Airport.airport_code",
+          "nullable": false
+        },
+        {
+          "name": "airport_departure",
+          "data_type": "VARCHAR(10)",
+          "is_primary_key": false,
+          "is_foreign_key": true,
+          "references": "Airport.airport_code",
+          "nullable": false
+        },
+        {
+          "name": "belt_number",
+          "data_type": "VARCHAR(20)",
+          "is_primary_key": false,
+          "is_foreign_key": true,
+          "references": "BaggageBelt.belt_number",
+          "nullable": true
+        },
+        {
+          "name": "license_number",
+          "data_type": "VARCHAR(50)",
+          "is_primary_key": false,
+          "is_foreign_key": true,
+          "references": "Airplane.license_number",
+          "nullable": false
+        }
+      ]
+    },
+    {
+      "name": "Airplane",
+      "primary_key": [
+        "license_number"
+      ],
+      "attributes": [
+        {
+          "name": "license_number",
+          "data_type": "VARCHAR(50)",
+          "is_primary_key": true,
+          "is_foreign_key": false,
+          "nullable": false
+        },
+        {
+          "name": "airplane_model",
+          "data_type": "VARCHAR(100)",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "nullable": false
+        }
+      ]
+    },
+    {
+      "name": "Location",
+      "primary_key": [
+        "location_code"
+      ],
+      "attributes": [
+        {
+          "name": "location_code",
+          "data_type": "VARCHAR(20)",
+          "is_primary_key": true,
+          "is_foreign_key": false,
+          "nullable": false
+        },
+        {
+          "name": "city",
+          "data_type": "VARCHAR(100)",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "nullable": false
+        }
+      ]
+    },
+    {
+      "name": "Status",
+      "primary_key": [
+        "status_code"
+      ],
+      "attributes": [
+        {
+          "name": "status_code",
+          "data_type": "VARCHAR(20)",
+          "is_primary_key": true,
+          "is_foreign_key": false,
+          "nullable": false
+        },
+        {
+          "name": "status",
+          "data_type": "VARCHAR(100)",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "nullable": false
+        }
+      ]
+    },
+    {
+      "name": "FlightStatus",
+      "primary_key": [
+        "status_code",
+        "flight_number",
+        "flight_date"
+      ],
+      "attributes": [
+        {
+          "name": "status_code",
+          "data_type": "VARCHAR(20)",
+          "is_primary_key": true,
+          "is_foreign_key": true,
+          "references": "Status.status_code",
+          "nullable": false
+        },
+        {
+          "name": "flight_number",
+          "data_type": "VARCHAR(20)",
+          "is_primary_key": true,
+          "is_foreign_key": true,
+          "references": "Flight.flight_number",
+          "nullable": false
+        },
+        {
+          "name": "flight_date",
+          "data_type": "DATE",
+          "is_primary_key": true,
+          "is_foreign_key": true,
+          "references": "Flight.flight_date",
+          "nullable": false
+        },
+        {
+          "name": "date",
+          "data_type": "DATE",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "nullable": false
+        },
+        {
+          "name": "hour",
+          "data_type": "VARCHAR(10)",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "nullable": false
+        }
+      ]
+    },
+    {
+      "name": "Airline",
+      "primary_key": [
+        "airline_code"
+      ],
+      "attributes": [
+        {
+          "name": "airline_code",
+          "data_type": "VARCHAR(10)",
+          "is_primary_key": true,
+          "is_foreign_key": false,
+          "nullable": false
+        },
+        {
+          "name": "name",
+          "data_type": "VARCHAR(100)",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "nullable": false
+        }
+      ]
+    },
+    {
+      "name": "Airport",
+      "primary_key": [
+        "airport_code"
+      ],
+      "attributes": [
+        {
+          "name": "airport_code",
+          "data_type": "VARCHAR(10)",
+          "is_primary_key": true,
+          "is_foreign_key": false,
+          "nullable": false
+        },
+        {
+          "name": "name",
+          "data_type": "VARCHAR(100)",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "nullable": false
+        },
+        {
+          "name": "location_code",
+          "data_type": "VARCHAR(20)",
+          "is_primary_key": false,
+          "is_foreign_key": true,
+          "references": "Location.location_code",
+          "nullable": false
+        }
+      ]
+    },
+    {
+      "name": "BaggageBelt",
+      "primary_key": [
+        "belt_number"
+      ],
+      "attributes": [
+        {
+          "name": "belt_number",
+          "data_type": "VARCHAR(20)",
+          "is_primary_key": true,
+          "is_foreign_key": false,
+          "nullable": false
+        },
+        {
+          "name": "airport_code",
+          "data_type": "VARCHAR(10)",
+          "is_primary_key": false,
+          "is_foreign_key": true,
+          "references": "Airport.airport_code",
+          "nullable": false
+        }
+      ]
+    },
+    {
+      "name": "CrewMember",
+      "primary_key": [
+        "crew_license"
+      ],
+      "attributes": [
+        {
+          "name": "crew_license",
+          "data_type": "VARCHAR(50)",
+          "is_primary_key": true,
+          "is_foreign_key": false,
+          "nullable": false
+        },
+        {
+          "name": "role",
+          "data_type": "VARCHAR(100)",
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "nullable": false
+        }
+      ]
+    },
+    {
+      "name": "FlightCrew",
+      "primary_key": [
+        "flight_number",
+        "flight_date",
+        "crew_license"
+      ],
+      "attributes": [
+        {
+          "name": "flight_number",
+          "data_type": "VARCHAR(20)",
+          "is_primary_key": true,
+          "is_foreign_key": true,
+          "references": "Flight.flight_number",
+          "nullable": false
+        },
+        {
+          "name": "flight_date",
+          "data_type": "DATE",
+          "is_primary_key": true,
+          "is_foreign_key": true,
+          "references": "Flight.flight_date",
+          "nullable": false
+        },
+        {
+          "name": "crew_license",
+          "data_type": "VARCHAR(50)",
+          "is_primary_key": true,
+          "is_foreign_key": true,
+          "references": "CrewMember.crew_license",
+          "nullable": false
+        }
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "from_entity": "Customer",
+      "to_entity": "Seat",
+      "from_cardinality": "1",
+      "to_cardinality": "0..N",
+      "fk_attribute": "passport"
+    },
+    {
+      "from_entity": "Flight",
+      "to_entity": "Seat",
+      "from_cardinality": "1",
+      "to_cardinality": "0..N",
+      "fk_attribute": "flight_number"
+    },
+    {
+      "from_entity": "Status",
+      "to_entity": "FlightStatus",
+      "from_cardinality": "1",
+      "to_cardinality": "0..N",
+      "fk_attribute": "status_code"
+    },
+    {
+      "from_entity": "Flight",
+      "to_entity": "FlightStatus",
+      "from_cardinality": "1",
+      "to_cardinality": "0..N",
+      "fk_attribute": "flight_number"
+    },
+    {
+      "from_entity": "Airline",
+      "to_entity": "Flight",
+      "from_cardinality": "1",
+      "to_cardinality": "0..N",
+      "fk_attribute": "airline_code"
+    },
+    {
+      "from_entity": "Airplane",
+      "to_entity": "Flight",
+      "from_cardinality": "1",
+      "to_cardinality": "0..N",
+      "fk_attribute": "license_number"
+    },
+    {
+      "from_entity": "Airport",
+      "to_entity": "Flight",
+      "from_cardinality": "1",
+      "to_cardinality": "0..N",
+      "fk_attribute": "airport_arrival"
+    },
+    {
+      "from_entity": "Airport",
+      "to_entity": "Flight",
+      "from_cardinality": "1",
+      "to_cardinality": "0..N",
+      "fk_attribute": "airport_departure"
+    },
+    {
+      "from_entity": "Location",
+      "to_entity": "Airport",
+      "from_cardinality": "1",
+      "to_cardinality": "0..N",
+      "fk_attribute": "location_code"
+    },
+    {
+      "from_entity": "Airport",
+      "to_entity": "BaggageBelt",
+      "from_cardinality": "1",
+      "to_cardinality": "0..N",
+      "fk_attribute": "airport_code"
+    },
+    {
+      "from_entity": "BaggageBelt",
+      "to_entity": "Flight",
+      "from_cardinality": "0..1",
+      "to_cardinality": "0..N",
+      "fk_attribute": "belt_number"
+    },
+    {
+      "from_entity": "Flight",
+      "to_entity": "FlightCrew",
+      "from_cardinality": "1",
+      "to_cardinality": "0..N",
+      "fk_attribute": "flight_number"
+    },
+    {
+      "from_entity": "CrewMember",
+      "to_entity": "FlightCrew",
+      "from_cardinality": "1",
+      "to_cardinality": "0..N",
+      "fk_attribute": "crew_license"
+    }
+  ]
+}

@@ -1,0 +1,752 @@
+{
+  "domain": "airlines",
+  "source_erd": "ground_truth_erd.json",
+  "description": "Ground truth model: the expert's canonical interpretation of the airlines ERD, recorded as an element-to-canonical mapping. Reference for scoring; not a competing method.",
+  "theory": {
+    "construction": "Two-step: a database-derived putative model via relational-to-ontology direct mapping, then expert semantic refinement.",
+    "grounding": {
+      "direct_mapping": "Sequeda, Tirmizi, Corcho & Miranker (2011); W3C Direct Mapping (2012)",
+      "ontological_categories": "Guizzardi et al., UFO (2015) and OntoUML relators",
+      "reification": "Noy & Rector (2006), reified relations",
+      "decomposition_unpacking": "Hainaut (2006); Guizzardi et al., ontological unpacking (2021, 2024)",
+      "deficiency_taxonomy": "Wand & Weber (1993), construct overload/redundancy/excess/deficit",
+      "ontology_definition": "Guarino (1998); separation of data modelling vs ontology engineering: Spyns, Meersman & Jarrar (2002)"
+    },
+    "ontological_category_values": [
+      "kind",
+      "relator",
+      "category"
+    ],
+    "refinement_types": [
+      "rename",
+      "reification",
+      "role_disambiguation",
+      "interpretation",
+      "gap_flagged"
+    ],
+    "bww_deficiency_values": [
+      "construct_overload",
+      "construct_redundancy",
+      "construct_excess",
+      "construct_deficit"
+    ]
+  },
+  "naming_convention": {
+    "concepts": "PascalCase",
+    "properties": "camelCase",
+    "relations": "camelCase verb phrases"
+  },
+  "concepts": [
+    {
+      "canonical_name": "Passenger",
+      "ontological_category": "kind",
+      "source_entity": "Customer",
+      "refinement": {
+        "type": "rename",
+        "from_source": "Customer"
+      },
+      "natural_key": [
+        "passportNumber"
+      ],
+      "attributes": [
+        {
+          "source": "Customer.passport",
+          "maps_to": {
+            "type": "property",
+            "canonical_name": "passportNumber",
+            "role": "identifier"
+          }
+        },
+        {
+          "source": "Customer.name",
+          "maps_to": {
+            "type": "property",
+            "canonical_name": "firstName",
+            "role": "descriptive"
+          }
+        },
+        {
+          "source": "Customer.surname",
+          "maps_to": {
+            "type": "property",
+            "canonical_name": "lastName",
+            "role": "descriptive"
+          }
+        }
+      ]
+    },
+    {
+      "canonical_name": "SeatAssignment",
+      "ontological_category": "relator",
+      "source_entity": "Seat",
+      "refinement": {
+        "type": "reification",
+        "ufo": "relator",
+        "note": "association of Passenger and Flight carrying its own attribute seatNumber; a junction table with no attributes would map to a plain relation"
+      },
+      "natural_key": [
+        "passenger",
+        "flight"
+      ],
+      "attributes": [
+        {
+          "source": "Seat.passport",
+          "maps_to": {
+            "type": "relation_role",
+            "relation": "assignedToPassenger",
+            "target_concept": "Passenger",
+            "accepted": [
+              "allocatedToPassenger",
+              "reservedForPassenger",
+              "occupiedByPassenger"
+            ]
+          }
+        },
+        {
+          "source": "Seat.flight_number",
+          "maps_to": {
+            "type": "relation_role",
+            "relation": "assignedOnFlight",
+            "target_concept": "Flight",
+            "accepted": [
+              "allocatedOnFlight",
+              "reservedOnFlight",
+              "bookedOnFlight"
+            ]
+          }
+        },
+        {
+          "source": "Seat.flight_date",
+          "maps_to": {
+            "type": "relation_role",
+            "relation": "assignedOnFlight",
+            "target_concept": "Flight",
+            "accepted": [
+              "allocatedOnFlight",
+              "reservedOnFlight",
+              "bookedOnFlight"
+            ]
+          }
+        },
+        {
+          "source": "Seat.seat_number",
+          "maps_to": {
+            "type": "property",
+            "canonical_name": "seatNumber",
+            "role": "descriptive"
+          }
+        }
+      ]
+    },
+    {
+      "canonical_name": "Flight",
+      "ontological_category": "kind",
+      "source_entity": "Flight",
+      "refinement": {
+        "type": "interpretation",
+        "note": "treated as a dated flight instance (flightNumber + flightDate); an alternative splits ScheduledFlight from FlightInstance"
+      },
+      "natural_key": [
+        "flightNumber",
+        "flightDate"
+      ],
+      "attributes": [
+        {
+          "source": "Flight.flight_number",
+          "maps_to": {
+            "type": "property",
+            "canonical_name": "flightNumber",
+            "role": "identifier"
+          }
+        },
+        {
+          "source": "Flight.flight_date",
+          "maps_to": {
+            "type": "property",
+            "canonical_name": "flightDate",
+            "role": "identifier"
+          }
+        },
+        {
+          "source": "Flight.airline_code",
+          "maps_to": {
+            "type": "relation_role",
+            "relation": "operatedByAirline",
+            "target_concept": "Airline",
+            "accepted": [
+              "flownByAirline",
+              "carriedByAirline",
+              "servedByAirline"
+            ]
+          }
+        },
+        {
+          "source": "Flight.airport_arrival",
+          "maps_to": {
+            "type": "relation_role",
+            "relation": "arrivesAtAirport",
+            "target_concept": "Airport",
+            "accepted": [
+              "landsAtAirport",
+              "arrivesInAirport"
+            ]
+          }
+        },
+        {
+          "source": "Flight.airport_departure",
+          "maps_to": {
+            "type": "relation_role",
+            "relation": "departsFromAirport",
+            "target_concept": "Airport",
+            "accepted": [
+              "leavesFromAirport",
+              "takesOffFromAirport",
+              "departsAirport"
+            ]
+          }
+        },
+        {
+          "source": "Flight.belt_number",
+          "maps_to": {
+            "type": "relation_role",
+            "relation": "usesBaggageBelt",
+            "target_concept": "BaggageBelt",
+            "accepted": [
+              "assignedToBaggageBelt",
+              "servedByBaggageBelt"
+            ]
+          }
+        },
+        {
+          "source": "Flight.license_number",
+          "maps_to": {
+            "type": "relation_role",
+            "relation": "operatedWithAirplane",
+            "target_concept": "Airplane",
+            "accepted": [
+              "flownByAirplane",
+              "operatedByAirplane",
+              "usesAirplane",
+              "assignedAirplane"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "canonical_name": "Airplane",
+      "ontological_category": "kind",
+      "source_entity": "Airplane",
+      "natural_key": [
+        "registration"
+      ],
+      "attributes": [
+        {
+          "source": "Airplane.license_number",
+          "maps_to": {
+            "type": "property",
+            "canonical_name": "registration",
+            "role": "identifier"
+          },
+          "refinement": {
+            "type": "rename",
+            "from_source": "license_number"
+          }
+        },
+        {
+          "source": "Airplane.airplane_model",
+          "maps_to": {
+            "type": "property",
+            "canonical_name": "model",
+            "role": "descriptive"
+          }
+        }
+      ]
+    },
+    {
+      "canonical_name": "Location",
+      "ontological_category": "kind",
+      "source_entity": "Location",
+      "natural_key": [
+        "locationCode"
+      ],
+      "attributes": [
+        {
+          "source": "Location.location_code",
+          "maps_to": {
+            "type": "property",
+            "canonical_name": "locationCode",
+            "role": "identifier"
+          }
+        },
+        {
+          "source": "Location.city",
+          "maps_to": {
+            "type": "property",
+            "canonical_name": "cityName",
+            "role": "descriptive"
+          }
+        }
+      ]
+    },
+    {
+      "canonical_name": "FlightStatusType",
+      "ontological_category": "category",
+      "source_entity": "Status",
+      "refinement": {
+        "type": "rename",
+        "from_source": "Status",
+        "note": "a reference/lookup of status types"
+      },
+      "natural_key": [
+        "statusCode"
+      ],
+      "attributes": [
+        {
+          "source": "Status.status_code",
+          "maps_to": {
+            "type": "property",
+            "canonical_name": "statusCode",
+            "role": "identifier"
+          }
+        },
+        {
+          "source": "Status.status",
+          "maps_to": {
+            "type": "property",
+            "canonical_name": "statusLabel",
+            "role": "descriptive"
+          }
+        }
+      ]
+    },
+    {
+      "canonical_name": "FlightStatusEvent",
+      "ontological_category": "relator",
+      "source_entity": "FlightStatus",
+      "refinement": {
+        "type": "reification",
+        "ufo": "relator",
+        "note": "association of a Flight and a FlightStatusType at a point in time, carrying eventDate and eventHour"
+      },
+      "natural_key": [
+        "statusType",
+        "flight"
+      ],
+      "attributes": [
+        {
+          "source": "FlightStatus.status_code",
+          "maps_to": {
+            "type": "relation_role",
+            "relation": "hasStatusType",
+            "target_concept": "FlightStatusType",
+            "accepted": [
+              "classifiedByStatusType",
+              "ofStatusType",
+              "categorizedByStatusType"
+            ]
+          }
+        },
+        {
+          "source": "FlightStatus.flight_number",
+          "maps_to": {
+            "type": "relation_role",
+            "relation": "concernsFlight",
+            "target_concept": "Flight",
+            "accepted": [
+              "reportsOnFlight",
+              "describesFlight",
+              "appliesToFlight",
+              "recordsFlight"
+            ]
+          }
+        },
+        {
+          "source": "FlightStatus.flight_date",
+          "maps_to": {
+            "type": "relation_role",
+            "relation": "concernsFlight",
+            "target_concept": "Flight",
+            "accepted": [
+              "reportsOnFlight",
+              "describesFlight",
+              "appliesToFlight",
+              "recordsFlight"
+            ]
+          }
+        },
+        {
+          "source": "FlightStatus.date",
+          "maps_to": {
+            "type": "property",
+            "canonical_name": "eventDate",
+            "role": "descriptive"
+          }
+        },
+        {
+          "source": "FlightStatus.hour",
+          "maps_to": {
+            "type": "property",
+            "canonical_name": "eventHour",
+            "role": "descriptive"
+          }
+        }
+      ]
+    },
+    {
+      "canonical_name": "Airline",
+      "ontological_category": "kind",
+      "source_entity": "Airline",
+      "natural_key": [
+        "airlineCode"
+      ],
+      "attributes": [
+        {
+          "source": "Airline.airline_code",
+          "maps_to": {
+            "type": "property",
+            "canonical_name": "airlineCode",
+            "role": "identifier"
+          }
+        },
+        {
+          "source": "Airline.name",
+          "maps_to": {
+            "type": "property",
+            "canonical_name": "airlineName",
+            "role": "descriptive"
+          }
+        }
+      ]
+    },
+    {
+      "canonical_name": "Airport",
+      "ontological_category": "kind",
+      "source_entity": "Airport",
+      "natural_key": [
+        "airportCode"
+      ],
+      "attributes": [
+        {
+          "source": "Airport.airport_code",
+          "maps_to": {
+            "type": "property",
+            "canonical_name": "airportCode",
+            "role": "identifier"
+          }
+        },
+        {
+          "source": "Airport.name",
+          "maps_to": {
+            "type": "property",
+            "canonical_name": "airportName",
+            "role": "descriptive"
+          }
+        },
+        {
+          "source": "Airport.location_code",
+          "maps_to": {
+            "type": "relation_role",
+            "relation": "locatedInLocation",
+            "target_concept": "Location",
+            "accepted": [
+              "situatedInLocation",
+              "locatedAtLocation"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "canonical_name": "BaggageBelt",
+      "ontological_category": "kind",
+      "source_entity": "BaggageBelt",
+      "natural_key": [
+        "beltNumber"
+      ],
+      "attributes": [
+        {
+          "source": "BaggageBelt.belt_number",
+          "maps_to": {
+            "type": "property",
+            "canonical_name": "beltNumber",
+            "role": "identifier"
+          }
+        },
+        {
+          "source": "BaggageBelt.airport_code",
+          "maps_to": {
+            "type": "relation_role",
+            "relation": "belongsToAirport",
+            "target_concept": "Airport",
+            "accepted": [
+              "locatedAtAirport",
+              "partOfAirport",
+              "servesAirport"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "canonical_name": "CrewMember",
+      "ontological_category": "kind",
+      "source_entity": "CrewMember",
+      "natural_key": [
+        "crewLicense"
+      ],
+      "attributes": [
+        {
+          "source": "CrewMember.crew_license",
+          "maps_to": {
+            "type": "property",
+            "canonical_name": "crewLicense",
+            "role": "identifier"
+          }
+        },
+        {
+          "source": "CrewMember.role",
+          "maps_to": {
+            "type": "property",
+            "canonical_name": "crewRole",
+            "role": "descriptive"
+          }
+        }
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "canonical_name": "assignedToPassenger",
+      "domain": "SeatAssignment",
+      "range": "Passenger",
+      "source": {
+        "from_entity": "Customer",
+        "to_entity": "Seat",
+        "fk_attribute": "passport"
+      },
+      "from_cardinality": "1",
+      "to_cardinality": "0..N",
+      "inverse": "hasSeatAssignment",
+      "accepted": [
+        "allocatedToPassenger",
+        "reservedForPassenger",
+        "occupiedByPassenger"
+      ]
+    },
+    {
+      "canonical_name": "assignedOnFlight",
+      "domain": "SeatAssignment",
+      "range": "Flight",
+      "source": {
+        "from_entity": "Flight",
+        "to_entity": "Seat",
+        "fk_attribute": "flight_number"
+      },
+      "from_cardinality": "1",
+      "to_cardinality": "0..N",
+      "inverse": "hasSeatAssignment",
+      "accepted": [
+        "allocatedOnFlight",
+        "reservedOnFlight",
+        "bookedOnFlight"
+      ]
+    },
+    {
+      "canonical_name": "hasStatusType",
+      "domain": "FlightStatusEvent",
+      "range": "FlightStatusType",
+      "source": {
+        "from_entity": "Status",
+        "to_entity": "FlightStatus",
+        "fk_attribute": "status_code"
+      },
+      "from_cardinality": "1",
+      "to_cardinality": "0..N",
+      "inverse": "classifies",
+      "accepted": [
+        "classifiedByStatusType",
+        "ofStatusType",
+        "categorizedByStatusType"
+      ]
+    },
+    {
+      "canonical_name": "concernsFlight",
+      "domain": "FlightStatusEvent",
+      "range": "Flight",
+      "source": {
+        "from_entity": "Flight",
+        "to_entity": "FlightStatus",
+        "fk_attribute": "flight_number"
+      },
+      "from_cardinality": "1",
+      "to_cardinality": "0..N",
+      "inverse": "hasStatusEvent",
+      "accepted": [
+        "reportsOnFlight",
+        "describesFlight",
+        "appliesToFlight",
+        "recordsFlight"
+      ]
+    },
+    {
+      "canonical_name": "operatedByAirline",
+      "domain": "Flight",
+      "range": "Airline",
+      "source": {
+        "from_entity": "Airline",
+        "to_entity": "Flight",
+        "fk_attribute": "airline_code"
+      },
+      "from_cardinality": "1",
+      "to_cardinality": "0..N",
+      "inverse": "operates",
+      "accepted": [
+        "flownByAirline",
+        "carriedByAirline",
+        "servedByAirline"
+      ]
+    },
+    {
+      "canonical_name": "operatedWithAirplane",
+      "domain": "Flight",
+      "range": "Airplane",
+      "source": {
+        "from_entity": "Airplane",
+        "to_entity": "Flight",
+        "fk_attribute": "license_number"
+      },
+      "from_cardinality": "1",
+      "to_cardinality": "0..N",
+      "inverse": "operatesFlight",
+      "accepted": [
+        "flownByAirplane",
+        "operatedByAirplane",
+        "usesAirplane",
+        "assignedAirplane"
+      ]
+    },
+    {
+      "canonical_name": "arrivesAtAirport",
+      "domain": "Flight",
+      "range": "Airport",
+      "source": {
+        "from_entity": "Airport",
+        "to_entity": "Flight",
+        "fk_attribute": "airport_arrival"
+      },
+      "from_cardinality": "1",
+      "to_cardinality": "0..N",
+      "inverse": "isArrivalAirportOf",
+      "refinement": {
+        "type": "role_disambiguation",
+        "bww_deficiency_addressed": "construct_overload",
+        "note": "distinct role from departsFromAirport over the same Airport concept; collapsing both into one relation would be a construct overload"
+      },
+      "accepted": [
+        "landsAtAirport",
+        "arrivesInAirport"
+      ]
+    },
+    {
+      "canonical_name": "departsFromAirport",
+      "domain": "Flight",
+      "range": "Airport",
+      "source": {
+        "from_entity": "Airport",
+        "to_entity": "Flight",
+        "fk_attribute": "airport_departure"
+      },
+      "from_cardinality": "1",
+      "to_cardinality": "0..N",
+      "inverse": "isDepartureAirportOf",
+      "refinement": {
+        "type": "role_disambiguation",
+        "bww_deficiency_addressed": "construct_overload",
+        "note": "distinct role from arrivesAtAirport over the same Airport concept"
+      },
+      "accepted": [
+        "leavesFromAirport",
+        "takesOffFromAirport",
+        "departsAirport"
+      ]
+    },
+    {
+      "canonical_name": "locatedInLocation",
+      "domain": "Airport",
+      "range": "Location",
+      "source": {
+        "from_entity": "Location",
+        "to_entity": "Airport",
+        "fk_attribute": "location_code"
+      },
+      "from_cardinality": "1",
+      "to_cardinality": "0..N",
+      "inverse": "hasAirport",
+      "accepted": [
+        "situatedInLocation",
+        "locatedAtLocation"
+      ]
+    },
+    {
+      "canonical_name": "belongsToAirport",
+      "domain": "BaggageBelt",
+      "range": "Airport",
+      "source": {
+        "from_entity": "Airport",
+        "to_entity": "BaggageBelt",
+        "fk_attribute": "airport_code"
+      },
+      "from_cardinality": "1",
+      "to_cardinality": "0..N",
+      "inverse": "hasBaggageBelt",
+      "accepted": [
+        "locatedAtAirport",
+        "partOfAirport",
+        "servesAirport"
+      ]
+    },
+    {
+      "canonical_name": "usesBaggageBelt",
+      "domain": "Flight",
+      "range": "BaggageBelt",
+      "source": {
+        "from_entity": "BaggageBelt",
+        "to_entity": "Flight",
+        "fk_attribute": "belt_number"
+      },
+      "from_cardinality": "0..1",
+      "to_cardinality": "0..N",
+      "inverse": "servesFlight",
+      "accepted": [
+        "assignedToBaggageBelt",
+        "servedByBaggageBelt"
+      ]
+    },
+    {
+      "canonical_name": "hasCrewMember",
+      "domain": "Flight",
+      "range": "CrewMember",
+      "source": {
+        "junction_table": "FlightCrew",
+        "flight_fk": [
+          "flight_number",
+          "flight_date"
+        ],
+        "crew_fk": "crew_license"
+      },
+      "from_cardinality": "0..N",
+      "to_cardinality": "0..N",
+      "inverse": "assignedToFlight",
+      "refinement": {
+        "type": "interpretation",
+        "note": "many-to-many realized by the FlightCrew junction table; a pure junction with no own attributes maps to a plain relation (contrast SeatAssignment, a junction that carries seatNumber and is therefore reified as a relator)"
+      },
+      "accepted": [
+        "staffedByCrewMember",
+        "crewedByCrewMember",
+        "assignedCrewMember"
+      ]
+    }
+  ]
+}

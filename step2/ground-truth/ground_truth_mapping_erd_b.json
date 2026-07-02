@@ -1,0 +1,586 @@
+{
+  "domain": "airlines",
+  "source_erd": "ground_truth_erd_B.json",
+  "description": "Ground truth model for ERD-B, recorded as an element-to-canonical mapping. Its canonical vocabulary coincides with ERD-A's for the shared concepts (Passenger, Flight, Airline, Airplane, Airport), whose correspondences are induced by identical canonical names; where the two independent interpretations genuinely diverge (A's SeatAssignment vs B's Booking relator), the correspondence is asserted explicitly in cross_erd_ground_truth.json. Reference for scoring; not a competing method.",
+  "canonical_vocabulary_aligned_with": "ground_truth_model_aligned.json (ERD-A): shared concepts share names; the Passenger x Flight relator diverges (SeatAssignment in A, Booking in B)",
+  "concepts": [
+    {
+      "canonical_name": "Passenger",
+      "ontological_category": "kind",
+      "source_entity": "Passenger",
+      "cross_erd_counterpart": "ERD-A Customer (same concept; A splits name into first/last, B uses full_name; A keys on passport, B on a surrogate)",
+      "natural_key": [
+        "passportNumber"
+      ],
+      "attributes": [
+        {
+          "source": "Passenger.pax_id",
+          "maps_to": {
+            "type": "property",
+            "canonical_name": "passengerId",
+            "role": "identifier"
+          },
+          "refinement": {
+            "type": "interpretation",
+            "note": "surrogate key; canonical natural key is passportNumber"
+          }
+        },
+        {
+          "source": "Passenger.full_name",
+          "maps_to": {
+            "type": "property",
+            "canonical_name": "fullName",
+            "role": "descriptive"
+          },
+          "refinement": {
+            "type": "interpretation",
+            "note": "coarser granularity than canonical firstName + lastName (ERD-A); cross-ERD name-granularity conflict"
+          }
+        },
+        {
+          "source": "Passenger.passport_no",
+          "maps_to": {
+            "type": "property",
+            "canonical_name": "passportNumber",
+            "role": "identifier"
+          },
+          "refinement": {
+            "type": "rename",
+            "from_source": "passport_no"
+          }
+        },
+        {
+          "source": "Passenger.email",
+          "maps_to": {
+            "type": "property",
+            "canonical_name": "email",
+            "role": "descriptive"
+          }
+        }
+      ]
+    },
+    {
+      "canonical_name": "Booking",
+      "ontological_category": "relator",
+      "source_entity": "Booking",
+      "cross_erd_counterpart": "ERD-A SeatAssignment (same relator linking Passenger and Flight; integrated canonical name = Booking). B is richer (fare_class, booking_date) and uses a surrogate key vs A's composite key",
+      "refinement": {
+        "type": "reification",
+        "ufo": "relator",
+        "note": "reservation relator linking Passenger and Flight, carrying seat, fare_class, booking_date"
+      },
+      "natural_key": [
+        "bookingRef"
+      ],
+      "attributes": [
+        {
+          "source": "Booking.booking_ref",
+          "maps_to": {
+            "type": "property",
+            "canonical_name": "bookingRef",
+            "role": "identifier"
+          },
+          "refinement": {
+            "type": "interpretation",
+            "note": "surrogate key; ERD-A identifies the same relator by the composite (passenger, flight)"
+          }
+        },
+        {
+          "source": "Booking.pax_id",
+          "maps_to": {
+            "type": "relation_role",
+            "relation": "madeByPassenger",
+            "target_concept": "Passenger",
+            "accepted": [
+              "bookedByPassenger",
+              "placedByPassenger",
+              "ownedByPassenger"
+            ]
+          }
+        },
+        {
+          "source": "Booking.flight_id",
+          "maps_to": {
+            "type": "relation_role",
+            "relation": "bookedOnFlight",
+            "target_concept": "Flight",
+            "accepted": [
+              "reservedOnFlight",
+              "madeForFlight",
+              "appliesToFlight"
+            ]
+          }
+        },
+        {
+          "source": "Booking.seat",
+          "maps_to": {
+            "type": "property",
+            "canonical_name": "seatNumber",
+            "role": "descriptive"
+          }
+        },
+        {
+          "source": "Booking.fare_class",
+          "maps_to": {
+            "type": "property",
+            "canonical_name": "fareClass",
+            "role": "descriptive"
+          }
+        },
+        {
+          "source": "Booking.booking_date",
+          "maps_to": {
+            "type": "property",
+            "canonical_name": "bookingDate",
+            "role": "descriptive"
+          }
+        }
+      ]
+    },
+    {
+      "canonical_name": "Flight",
+      "ontological_category": "kind",
+      "source_entity": "Flight",
+      "cross_erd_counterpart": "ERD-A Flight (same concept; A keys on (flightNumber, flightDate), B on surrogate flight_id; A reifies status as FlightStatusEvent, B flattens it to a status attribute)",
+      "natural_key": [
+        "flightNumber",
+        "departureTime"
+      ],
+      "attributes": [
+        {
+          "source": "Flight.flight_id",
+          "maps_to": {
+            "type": "property",
+            "canonical_name": "flightId",
+            "role": "identifier"
+          },
+          "refinement": {
+            "type": "interpretation",
+            "note": "surrogate key; ERD-A identifies Flight by (flightNumber, flightDate)"
+          }
+        },
+        {
+          "source": "Flight.flight_no",
+          "maps_to": {
+            "type": "property",
+            "canonical_name": "flightNumber",
+            "role": "identifier"
+          },
+          "refinement": {
+            "type": "rename",
+            "from_source": "flight_no"
+          }
+        },
+        {
+          "source": "Flight.dep_datetime",
+          "maps_to": {
+            "type": "property",
+            "canonical_name": "departureTime",
+            "role": "descriptive"
+          }
+        },
+        {
+          "source": "Flight.arr_datetime",
+          "maps_to": {
+            "type": "property",
+            "canonical_name": "arrivalTime",
+            "role": "descriptive"
+          }
+        },
+        {
+          "source": "Flight.carrier_code",
+          "maps_to": {
+            "type": "relation_role",
+            "relation": "operatedByAirline",
+            "target_concept": "Airline",
+            "accepted": [
+              "flownByAirline",
+              "carriedByAirline",
+              "servedByAirline"
+            ]
+          }
+        },
+        {
+          "source": "Flight.aircraft_reg",
+          "maps_to": {
+            "type": "relation_role",
+            "relation": "operatedWithAirplane",
+            "target_concept": "Airplane",
+            "accepted": [
+              "flownByAirplane",
+              "operatedByAirplane",
+              "usesAirplane",
+              "assignedAirplane"
+            ]
+          }
+        },
+        {
+          "source": "Flight.origin_iata",
+          "maps_to": {
+            "type": "relation_role",
+            "relation": "departsFromAirport",
+            "target_concept": "Airport",
+            "accepted": [
+              "leavesFromAirport",
+              "takesOffFromAirport",
+              "departsAirport"
+            ]
+          }
+        },
+        {
+          "source": "Flight.dest_iata",
+          "maps_to": {
+            "type": "relation_role",
+            "relation": "arrivesAtAirport",
+            "target_concept": "Airport",
+            "accepted": [
+              "landsAtAirport",
+              "arrivesInAirport"
+            ]
+          }
+        },
+        {
+          "source": "Flight.status",
+          "maps_to": {
+            "type": "property",
+            "canonical_name": "flightStatus",
+            "role": "descriptive"
+          },
+          "refinement": {
+            "type": "interpretation",
+            "note": "structural conflict vs ERD-A: A reifies status as FlightStatusType + FlightStatusEvent (history), B records only current state as an attribute"
+          }
+        }
+      ]
+    },
+    {
+      "canonical_name": "Airline",
+      "ontological_category": "kind",
+      "source_entity": "Airline",
+      "cross_erd_counterpart": "ERD-A Airline (same concept; B adds country)",
+      "natural_key": [
+        "airlineCode"
+      ],
+      "attributes": [
+        {
+          "source": "Airline.carrier_code",
+          "maps_to": {
+            "type": "property",
+            "canonical_name": "airlineCode",
+            "role": "identifier"
+          },
+          "refinement": {
+            "type": "rename",
+            "from_source": "carrier_code"
+          }
+        },
+        {
+          "source": "Airline.carrier_name",
+          "maps_to": {
+            "type": "property",
+            "canonical_name": "airlineName",
+            "role": "descriptive"
+          },
+          "refinement": {
+            "type": "rename",
+            "from_source": "carrier_name"
+          }
+        },
+        {
+          "source": "Airline.country",
+          "maps_to": {
+            "type": "property",
+            "canonical_name": "country",
+            "role": "descriptive"
+          }
+        }
+      ]
+    },
+    {
+      "canonical_name": "Airplane",
+      "ontological_category": "kind",
+      "source_entity": "Aircraft",
+      "cross_erd_counterpart": "ERD-A Airplane (same concept; A stores model as the attribute airplane_model, B normalizes it into the AircraftType entity)",
+      "natural_key": [
+        "registration"
+      ],
+      "attributes": [
+        {
+          "source": "Aircraft.aircraft_reg",
+          "maps_to": {
+            "type": "property",
+            "canonical_name": "registration",
+            "role": "identifier"
+          },
+          "refinement": {
+            "type": "rename",
+            "from_source": "aircraft_reg"
+          }
+        },
+        {
+          "source": "Aircraft.type_code",
+          "maps_to": {
+            "type": "relation_role",
+            "relation": "hasAirplaneType",
+            "target_concept": "AirplaneType",
+            "accepted": [
+              "ofAirplaneType",
+              "classifiedByAirplaneType",
+              "isOfAirplaneType"
+            ]
+          }
+        },
+        {
+          "source": "Aircraft.seats_capacity",
+          "maps_to": {
+            "type": "property",
+            "canonical_name": "seatsCapacity",
+            "role": "descriptive"
+          }
+        }
+      ],
+      "refinement": {
+        "type": "rename",
+        "from_source": "Aircraft",
+        "note": "canonical concept aligned with ERD-A (Airplane)"
+      }
+    },
+    {
+      "canonical_name": "AirplaneType",
+      "ontological_category": "kind",
+      "source_entity": "AircraftType",
+      "cross_erd_counterpart": "ERD-A Airplane.airplane_model (attribute): structural conflict—a first-class entity in B, a plain attribute value in A",
+      "natural_key": [
+        "typeCode"
+      ],
+      "attributes": [
+        {
+          "source": "AircraftType.type_code",
+          "maps_to": {
+            "type": "property",
+            "canonical_name": "typeCode",
+            "role": "identifier"
+          }
+        },
+        {
+          "source": "AircraftType.model_name",
+          "maps_to": {
+            "type": "property",
+            "canonical_name": "modelName",
+            "role": "descriptive"
+          },
+          "refinement": {
+            "type": "interpretation",
+            "note": "corresponds to ERD-A Airplane.airplane_model (entity-vs-attribute granularity conflict)"
+          }
+        },
+        {
+          "source": "AircraftType.manufacturer",
+          "maps_to": {
+            "type": "property",
+            "canonical_name": "manufacturer",
+            "role": "descriptive"
+          }
+        }
+      ],
+      "refinement": {
+        "type": "rename",
+        "from_source": "AircraftType",
+        "note": "canonical concept aligned with ERD-A (AirplaneType)"
+      }
+    },
+    {
+      "canonical_name": "Airport",
+      "ontological_category": "kind",
+      "source_entity": "Airport",
+      "cross_erd_counterpart": "ERD-A Airport (same concept; A separates Location as its own entity, B folds city/country into Airport attributes)",
+      "natural_key": [
+        "airportCode"
+      ],
+      "attributes": [
+        {
+          "source": "Airport.iata_code",
+          "maps_to": {
+            "type": "property",
+            "canonical_name": "airportCode",
+            "role": "identifier"
+          },
+          "refinement": {
+            "type": "rename",
+            "from_source": "iata_code"
+          }
+        },
+        {
+          "source": "Airport.airport_name",
+          "maps_to": {
+            "type": "property",
+            "canonical_name": "airportName",
+            "role": "descriptive"
+          },
+          "refinement": {
+            "type": "rename",
+            "from_source": "airport_name"
+          }
+        },
+        {
+          "source": "Airport.city",
+          "maps_to": {
+            "type": "property",
+            "canonical_name": "cityName",
+            "role": "descriptive"
+          },
+          "refinement": {
+            "type": "interpretation",
+            "note": "ERD-A models this via a separate Location entity (location_code, city); structural granularity conflict"
+          }
+        },
+        {
+          "source": "Airport.country",
+          "maps_to": {
+            "type": "property",
+            "canonical_name": "country",
+            "role": "descriptive"
+          }
+        }
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "canonical_name": "madeByPassenger",
+      "domain": "Booking",
+      "range": "Passenger",
+      "source": {
+        "from_entity": "Passenger",
+        "to_entity": "Booking",
+        "fk_attribute": "pax_id"
+      },
+      "from_cardinality": "1",
+      "to_cardinality": "0..N",
+      "inverse": "hasBooking",
+      "accepted": [
+        "bookedByPassenger",
+        "placedByPassenger",
+        "ownedByPassenger"
+      ]
+    },
+    {
+      "canonical_name": "bookedOnFlight",
+      "domain": "Booking",
+      "range": "Flight",
+      "source": {
+        "from_entity": "Flight",
+        "to_entity": "Booking",
+        "fk_attribute": "flight_id"
+      },
+      "from_cardinality": "1",
+      "to_cardinality": "0..N",
+      "inverse": "hasBooking",
+      "accepted": [
+        "reservedOnFlight",
+        "madeForFlight",
+        "appliesToFlight"
+      ]
+    },
+    {
+      "canonical_name": "operatedByAirline",
+      "domain": "Flight",
+      "range": "Airline",
+      "source": {
+        "from_entity": "Airline",
+        "to_entity": "Flight",
+        "fk_attribute": "carrier_code"
+      },
+      "from_cardinality": "1",
+      "to_cardinality": "0..N",
+      "inverse": "operates",
+      "accepted": [
+        "flownByAirline",
+        "carriedByAirline",
+        "servedByAirline"
+      ]
+    },
+    {
+      "canonical_name": "operatedWithAirplane",
+      "domain": "Flight",
+      "range": "Airplane",
+      "source": {
+        "from_entity": "Aircraft",
+        "to_entity": "Flight",
+        "fk_attribute": "aircraft_reg"
+      },
+      "from_cardinality": "1",
+      "to_cardinality": "0..N",
+      "inverse": "operatesFlight",
+      "accepted": [
+        "flownByAirplane",
+        "operatedByAirplane",
+        "usesAirplane",
+        "assignedAirplane"
+      ]
+    },
+    {
+      "canonical_name": "departsFromAirport",
+      "domain": "Flight",
+      "range": "Airport",
+      "source": {
+        "from_entity": "Airport",
+        "to_entity": "Flight",
+        "fk_attribute": "origin_iata"
+      },
+      "from_cardinality": "1",
+      "to_cardinality": "0..N",
+      "inverse": "isDepartureAirportOf",
+      "refinement": {
+        "type": "role_disambiguation",
+        "bww_deficiency_addressed": "construct_overload",
+        "note": "distinct role from arrivesAtAirport over the same Airport concept"
+      },
+      "accepted": [
+        "leavesFromAirport",
+        "takesOffFromAirport",
+        "departsAirport"
+      ]
+    },
+    {
+      "canonical_name": "arrivesAtAirport",
+      "domain": "Flight",
+      "range": "Airport",
+      "source": {
+        "from_entity": "Airport",
+        "to_entity": "Flight",
+        "fk_attribute": "dest_iata"
+      },
+      "from_cardinality": "1",
+      "to_cardinality": "0..N",
+      "inverse": "isArrivalAirportOf",
+      "refinement": {
+        "type": "role_disambiguation",
+        "bww_deficiency_addressed": "construct_overload",
+        "note": "distinct role from departsFromAirport over the same Airport concept"
+      },
+      "accepted": [
+        "landsAtAirport",
+        "arrivesInAirport"
+      ]
+    },
+    {
+      "canonical_name": "hasAirplaneType",
+      "domain": "Airplane",
+      "range": "AirplaneType",
+      "source": {
+        "from_entity": "AircraftType",
+        "to_entity": "Aircraft",
+        "fk_attribute": "type_code"
+      },
+      "from_cardinality": "1",
+      "to_cardinality": "0..N",
+      "inverse": "typeOf",
+      "accepted": [
+        "ofAirplaneType",
+        "classifiedByAirplaneType",
+        "isOfAirplaneType"
+      ]
+    }
+  ]
+}

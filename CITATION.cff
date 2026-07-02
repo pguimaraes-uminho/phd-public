@@ -1,0 +1,31 @@
+cff-version: 1.2.0
+message: "If you use this replication package, please cite it as below."
+title: "Schema-to-Ontology Mapping with LLMs — Replication Package"
+abstract: >-
+  Replication package for a two-stage evaluation of LLM-assisted mapping of
+  relational ERD schemas to domain ontologies, and cross-ERD ontology
+  integration, against expert ground truth. Includes the ERD schemas, expert
+  ground-truth ontologies, instance data, prompts and briefs, runnable
+  evaluation scripts, and the published outputs of the reported runs.
+type: dataset
+authors:
+  - family-names: "Guimarães"
+    given-names: "Pedro"
+    orcid: "https://orcid.org/0000-0003-3390-8528"
+date-released: "2026-06-29"
+version: "1.0.0"
+license: MIT                # code; data/docs are CC-BY-4.0 (see LICENSE-DATA)
+repository-code: "<add repository URL>"   # TODO: replace with the repository URL
+keywords:
+  - ontology engineering
+  - schema-to-ontology mapping
+  - large language models
+  - ontology matching
+  - cross-ERD integration
+  - reproducibility
+references:
+  - type: software
+    title: "Google Gemini 2.5 Flash"
+    notes: "LLM used for the reported runs; model id gemini-2.5-flash, runs dated 2026-06-29, temperature 0.2."
+# repository-code: "https://github.com/<user>/<repo>"   # TODO: add repository URL
+# doi: "10.0000/zenodo.0000000"                          # TODO: add archival DOI

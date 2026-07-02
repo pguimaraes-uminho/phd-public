@@ -1,0 +1,882 @@
+{
+  "erd_a": {
+    "rule_based": {
+      "status": "success",
+      "time_seconds": 0.0,
+      "n_runs": 1,
+      "temperatures": [
+        0.0
+      ],
+      "metrics": {
+        "false_negatives": 0.0,
+        "type_accuracy": 1.0,
+        "over_merge_rate": 0.0882,
+        "precision": 1.0,
+        "f1": 1.0,
+        "recall": 1.0,
+        "curation_effort": 2.4688,
+        "hallucination_rate": 0.0,
+        "provenance_completeness": 1.0,
+        "refinement_accuracy": 0.0345,
+        "under_merge_rate": 0.0,
+        "category_accuracy": 0.9091,
+        "proposed_provenance_completeness": 1.0,
+        "false_positives": 0.0
+      },
+      "metrics_mean": {
+        "false_negatives": 0.0,
+        "type_accuracy": 1.0,
+        "over_merge_rate": 0.0882,
+        "precision": 1.0,
+        "f1": 1.0,
+        "recall": 1.0,
+        "curation_effort": 2.4688,
+        "hallucination_rate": 0.0,
+        "provenance_completeness": 1.0,
+        "refinement_accuracy": 0.0345,
+        "under_merge_rate": 0.0,
+        "category_accuracy": 0.9091,
+        "proposed_provenance_completeness": 1.0,
+        "false_positives": 0.0
+      },
+      "metrics_std": {
+        "false_negatives": 0.0,
+        "type_accuracy": 0.0,
+        "over_merge_rate": 0.0,
+        "precision": 0.0,
+        "f1": 0.0,
+        "recall": 0.0,
+        "curation_effort": 0.0,
+        "hallucination_rate": 0.0,
+        "provenance_completeness": 0.0,
+        "refinement_accuracy": 0.0,
+        "under_merge_rate": 0.0,
+        "category_accuracy": 0.0,
+        "proposed_provenance_completeness": 0.0,
+        "false_positives": 0.0
+      },
+      "runs": [
+        {
+          "temperature": 0.0,
+          "time_seconds": 0.0,
+          "metrics": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "false_positives": 0,
+            "false_negatives": 0,
+            "curation_effort": 2.4688,
+            "over_merge_rate": 0.0882,
+            "under_merge_rate": 0.0,
+            "hallucination_rate": 0.0,
+            "provenance_completeness": 1.0,
+            "proposed_provenance_completeness": 1.0,
+            "refinement_accuracy": 0.0345,
+            "type_accuracy": 1.0,
+            "category_accuracy": 0.9091
+          }
+        }
+      ]
+    },
+    "llm_erd": {
+      "status": "success",
+      "time_seconds": 125.9,
+      "n_runs": 3,
+      "temperatures": [
+        0.2,
+        0.2,
+        0.2
+      ],
+      "metrics": {
+        "false_negatives": 0.0,
+        "type_accuracy": 1.0,
+        "over_merge_rate": 0.0,
+        "precision": 1.0,
+        "f1": 1.0,
+        "recall": 1.0,
+        "curation_effort": 1.5625,
+        "hallucination_rate": 0.0,
+        "provenance_completeness": 1.0,
+        "refinement_accuracy": 0.6322,
+        "under_merge_rate": 0.0,
+        "category_accuracy": 0.9394,
+        "proposed_provenance_completeness": 1.0,
+        "false_positives": 0.0
+      },
+      "metrics_mean": {
+        "false_negatives": 0.0,
+        "type_accuracy": 1.0,
+        "over_merge_rate": 0.0,
+        "precision": 1.0,
+        "f1": 1.0,
+        "recall": 1.0,
+        "curation_effort": 1.5625,
+        "hallucination_rate": 0.0,
+        "provenance_completeness": 1.0,
+        "refinement_accuracy": 0.6322,
+        "under_merge_rate": 0.0,
+        "category_accuracy": 0.9394,
+        "proposed_provenance_completeness": 1.0,
+        "false_positives": 0.0
+      },
+      "metrics_std": {
+        "false_negatives": 0.0,
+        "type_accuracy": 0.0,
+        "over_merge_rate": 0.0,
+        "precision": 0.0,
+        "f1": 0.0,
+        "recall": 0.0,
+        "curation_effort": 0.1531,
+        "hallucination_rate": 0.0,
+        "provenance_completeness": 0.0,
+        "refinement_accuracy": 0.043,
+        "under_merge_rate": 0.0,
+        "category_accuracy": 0.0429,
+        "proposed_provenance_completeness": 0.0,
+        "false_positives": 0.0
+      },
+      "runs": [
+        {
+          "temperature": 0.2,
+          "time_seconds": 32.1,
+          "metrics": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "false_positives": 0,
+            "false_negatives": 0,
+            "curation_effort": 1.75,
+            "over_merge_rate": 0.0,
+            "under_merge_rate": 0.0,
+            "hallucination_rate": 0.0,
+            "provenance_completeness": 1.0,
+            "proposed_provenance_completeness": 1.0,
+            "refinement_accuracy": 0.5862,
+            "type_accuracy": 1.0,
+            "category_accuracy": 0.9091
+          }
+        },
+        {
+          "temperature": 0.2,
+          "time_seconds": 39.35,
+          "metrics": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "false_positives": 0,
+            "false_negatives": 0,
+            "curation_effort": 1.375,
+            "over_merge_rate": 0.0,
+            "under_merge_rate": 0.0,
+            "hallucination_rate": 0.0,
+            "provenance_completeness": 1.0,
+            "proposed_provenance_completeness": 1.0,
+            "refinement_accuracy": 0.6897,
+            "type_accuracy": 1.0,
+            "category_accuracy": 0.9091
+          }
+        },
+        {
+          "temperature": 0.2,
+          "time_seconds": 34.43,
+          "metrics": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "false_positives": 0,
+            "false_negatives": 0,
+            "curation_effort": 1.5625,
+            "over_merge_rate": 0.0,
+            "under_merge_rate": 0.0,
+            "hallucination_rate": 0.0,
+            "provenance_completeness": 1.0,
+            "proposed_provenance_completeness": 1.0,
+            "refinement_accuracy": 0.6207,
+            "type_accuracy": 1.0,
+            "category_accuracy": 1.0
+          }
+        }
+      ]
+    },
+    "llm_erd_data": {
+      "status": "success",
+      "time_seconds": 97.21,
+      "n_runs": 3,
+      "temperatures": [
+        0.2,
+        0.2,
+        0.2
+      ],
+      "metrics": {
+        "false_negatives": 0.0,
+        "type_accuracy": 1.0,
+        "over_merge_rate": 0.0,
+        "precision": 1.0,
+        "f1": 1.0,
+        "recall": 1.0,
+        "curation_effort": 1.3438,
+        "hallucination_rate": 0.0,
+        "provenance_completeness": 1.0,
+        "refinement_accuracy": 0.6896,
+        "under_merge_rate": 0.0,
+        "category_accuracy": 1.0,
+        "proposed_provenance_completeness": 1.0,
+        "false_positives": 0.0
+      },
+      "metrics_mean": {
+        "false_negatives": 0.0,
+        "type_accuracy": 1.0,
+        "over_merge_rate": 0.0,
+        "precision": 1.0,
+        "f1": 1.0,
+        "recall": 1.0,
+        "curation_effort": 1.3438,
+        "hallucination_rate": 0.0,
+        "provenance_completeness": 1.0,
+        "refinement_accuracy": 0.6896,
+        "under_merge_rate": 0.0,
+        "category_accuracy": 1.0,
+        "proposed_provenance_completeness": 1.0,
+        "false_positives": 0.0
+      },
+      "metrics_std": {
+        "false_negatives": 0.0,
+        "type_accuracy": 0.0,
+        "over_merge_rate": 0.0,
+        "precision": 0.0,
+        "f1": 0.0,
+        "recall": 0.0,
+        "curation_effort": 0.0255,
+        "hallucination_rate": 0.0,
+        "provenance_completeness": 0.0,
+        "refinement_accuracy": 0.0487,
+        "under_merge_rate": 0.0,
+        "category_accuracy": 0.0,
+        "proposed_provenance_completeness": 0.0,
+        "false_positives": 0.0
+      },
+      "runs": [
+        {
+          "temperature": 0.2,
+          "time_seconds": 21.96,
+          "metrics": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "false_positives": 0,
+            "false_negatives": 0,
+            "curation_effort": 1.3125,
+            "over_merge_rate": 0.0,
+            "under_merge_rate": 0.0,
+            "hallucination_rate": 0.0,
+            "provenance_completeness": 1.0,
+            "proposed_provenance_completeness": 1.0,
+            "refinement_accuracy": 0.7241,
+            "type_accuracy": 1.0,
+            "category_accuracy": 1.0
+          }
+        },
+        {
+          "temperature": 0.2,
+          "time_seconds": 27.25,
+          "metrics": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "false_positives": 0,
+            "false_negatives": 0,
+            "curation_effort": 1.375,
+            "over_merge_rate": 0.0,
+            "under_merge_rate": 0.0,
+            "hallucination_rate": 0.0,
+            "provenance_completeness": 1.0,
+            "proposed_provenance_completeness": 1.0,
+            "refinement_accuracy": 0.6207,
+            "type_accuracy": 1.0,
+            "category_accuracy": 1.0
+          }
+        },
+        {
+          "temperature": 0.2,
+          "time_seconds": 27.99,
+          "metrics": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "false_positives": 0,
+            "false_negatives": 0,
+            "curation_effort": 1.3438,
+            "over_merge_rate": 0.0,
+            "under_merge_rate": 0.0,
+            "hallucination_rate": 0.0,
+            "provenance_completeness": 1.0,
+            "proposed_provenance_completeness": 1.0,
+            "refinement_accuracy": 0.7241,
+            "type_accuracy": 1.0,
+            "category_accuracy": 1.0
+          }
+        }
+      ]
+    },
+    "llm_erd_data_expert_brief": {
+      "status": "success",
+      "time_seconds": 108.23,
+      "n_runs": 3,
+      "temperatures": [
+        0.2,
+        0.2,
+        0.2
+      ],
+      "metrics": {
+        "false_negatives": 0.0,
+        "type_accuracy": 1.0,
+        "over_merge_rate": 0.0,
+        "precision": 1.0,
+        "f1": 1.0,
+        "recall": 1.0,
+        "curation_effort": 1.7709,
+        "hallucination_rate": 0.0,
+        "provenance_completeness": 1.0,
+        "refinement_accuracy": 0.7012,
+        "under_merge_rate": 0.0,
+        "category_accuracy": 1.0,
+        "proposed_provenance_completeness": 1.0,
+        "false_positives": 0.0
+      },
+      "metrics_mean": {
+        "false_negatives": 0.0,
+        "type_accuracy": 1.0,
+        "over_merge_rate": 0.0,
+        "precision": 1.0,
+        "f1": 1.0,
+        "recall": 1.0,
+        "curation_effort": 1.7709,
+        "hallucination_rate": 0.0,
+        "provenance_completeness": 1.0,
+        "refinement_accuracy": 0.7012,
+        "under_merge_rate": 0.0,
+        "category_accuracy": 1.0,
+        "proposed_provenance_completeness": 1.0,
+        "false_positives": 0.0
+      },
+      "metrics_std": {
+        "false_negatives": 0.0,
+        "type_accuracy": 0.0,
+        "over_merge_rate": 0.0,
+        "precision": 0.0,
+        "f1": 0.0,
+        "recall": 0.0,
+        "curation_effort": 0.1259,
+        "hallucination_rate": 0.0,
+        "provenance_completeness": 0.0,
+        "refinement_accuracy": 0.043,
+        "under_merge_rate": 0.0,
+        "category_accuracy": 0.0,
+        "proposed_provenance_completeness": 0.0,
+        "false_positives": 0.0
+      },
+      "runs": [
+        {
+          "temperature": 0.2,
+          "time_seconds": 30.0,
+          "metrics": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "false_positives": 0,
+            "false_negatives": 0,
+            "curation_effort": 1.8438,
+            "over_merge_rate": 0.0,
+            "under_merge_rate": 0.0,
+            "hallucination_rate": 0.0,
+            "provenance_completeness": 1.0,
+            "proposed_provenance_completeness": 1.0,
+            "refinement_accuracy": 0.6552,
+            "type_accuracy": 1.0,
+            "category_accuracy": 1.0
+          }
+        },
+        {
+          "temperature": 0.2,
+          "time_seconds": 29.07,
+          "metrics": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "false_positives": 0,
+            "false_negatives": 0,
+            "curation_effort": 1.875,
+            "over_merge_rate": 0.0,
+            "under_merge_rate": 0.0,
+            "hallucination_rate": 0.0,
+            "provenance_completeness": 1.0,
+            "proposed_provenance_completeness": 1.0,
+            "refinement_accuracy": 0.6897,
+            "type_accuracy": 1.0,
+            "category_accuracy": 1.0
+          }
+        },
+        {
+          "temperature": 0.2,
+          "time_seconds": 29.15,
+          "metrics": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "false_positives": 0,
+            "false_negatives": 0,
+            "curation_effort": 1.5938,
+            "over_merge_rate": 0.0,
+            "under_merge_rate": 0.0,
+            "hallucination_rate": 0.0,
+            "provenance_completeness": 1.0,
+            "proposed_provenance_completeness": 1.0,
+            "refinement_accuracy": 0.7586,
+            "type_accuracy": 1.0,
+            "category_accuracy": 1.0
+          }
+        }
+      ]
+    }
+  },
+  "erd_b": {
+    "rule_based": {
+      "status": "success",
+      "time_seconds": 0.0,
+      "n_runs": 1,
+      "temperatures": [
+        0.0
+      ],
+      "metrics": {
+        "false_negatives": 0.0,
+        "type_accuracy": 1.0,
+        "over_merge_rate": 0.0,
+        "precision": 1.0,
+        "f1": 1.0,
+        "recall": 1.0,
+        "curation_effort": 2.0323,
+        "hallucination_rate": 0.0,
+        "provenance_completeness": 1.0,
+        "refinement_accuracy": 0.0,
+        "under_merge_rate": 0.0,
+        "category_accuracy": 0.8571,
+        "proposed_provenance_completeness": 1.0,
+        "false_positives": 0.0
+      },
+      "metrics_mean": {
+        "false_negatives": 0.0,
+        "type_accuracy": 1.0,
+        "over_merge_rate": 0.0,
+        "precision": 1.0,
+        "f1": 1.0,
+        "recall": 1.0,
+        "curation_effort": 2.0323,
+        "hallucination_rate": 0.0,
+        "provenance_completeness": 1.0,
+        "refinement_accuracy": 0.0,
+        "under_merge_rate": 0.0,
+        "category_accuracy": 0.8571,
+        "proposed_provenance_completeness": 1.0,
+        "false_positives": 0.0
+      },
+      "metrics_std": {
+        "false_negatives": 0.0,
+        "type_accuracy": 0.0,
+        "over_merge_rate": 0.0,
+        "precision": 0.0,
+        "f1": 0.0,
+        "recall": 0.0,
+        "curation_effort": 0.0,
+        "hallucination_rate": 0.0,
+        "provenance_completeness": 0.0,
+        "refinement_accuracy": 0.0,
+        "under_merge_rate": 0.0,
+        "category_accuracy": 0.0,
+        "proposed_provenance_completeness": 0.0,
+        "false_positives": 0.0
+      },
+      "runs": [
+        {
+          "temperature": 0.0,
+          "time_seconds": 0.0,
+          "metrics": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "false_positives": 0,
+            "false_negatives": 0,
+            "curation_effort": 2.0323,
+            "over_merge_rate": 0.0,
+            "under_merge_rate": 0.0,
+            "hallucination_rate": 0.0,
+            "provenance_completeness": 1.0,
+            "proposed_provenance_completeness": 1.0,
+            "refinement_accuracy": 0.0,
+            "type_accuracy": 1.0,
+            "category_accuracy": 0.8571
+          }
+        }
+      ]
+    },
+    "llm_erd": {
+      "status": "success",
+      "time_seconds": 98.71,
+      "n_runs": 3,
+      "temperatures": [
+        0.2,
+        0.2,
+        0.2
+      ],
+      "metrics": {
+        "false_negatives": 0.0,
+        "type_accuracy": 1.0,
+        "over_merge_rate": 0.0,
+        "precision": 1.0,
+        "f1": 1.0,
+        "recall": 1.0,
+        "curation_effort": 1.9032,
+        "hallucination_rate": 0.0,
+        "provenance_completeness": 1.0,
+        "refinement_accuracy": 0.3016,
+        "under_merge_rate": 0.0,
+        "category_accuracy": 1.0,
+        "proposed_provenance_completeness": 1.0,
+        "false_positives": 0.0
+      },
+      "metrics_mean": {
+        "false_negatives": 0.0,
+        "type_accuracy": 1.0,
+        "over_merge_rate": 0.0,
+        "precision": 1.0,
+        "f1": 1.0,
+        "recall": 1.0,
+        "curation_effort": 1.9032,
+        "hallucination_rate": 0.0,
+        "provenance_completeness": 1.0,
+        "refinement_accuracy": 0.3016,
+        "under_merge_rate": 0.0,
+        "category_accuracy": 1.0,
+        "proposed_provenance_completeness": 1.0,
+        "false_positives": 0.0
+      },
+      "metrics_std": {
+        "false_negatives": 0.0,
+        "type_accuracy": 0.0,
+        "over_merge_rate": 0.0,
+        "precision": 0.0,
+        "f1": 0.0,
+        "recall": 0.0,
+        "curation_effort": 0.0456,
+        "hallucination_rate": 0.0,
+        "provenance_completeness": 0.0,
+        "refinement_accuracy": 0.0449,
+        "under_merge_rate": 0.0,
+        "category_accuracy": 0.0,
+        "proposed_provenance_completeness": 0.0,
+        "false_positives": 0.0
+      },
+      "runs": [
+        {
+          "temperature": 0.2,
+          "time_seconds": 30.41,
+          "metrics": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "false_positives": 0,
+            "false_negatives": 0,
+            "curation_effort": 1.9677,
+            "over_merge_rate": 0.0,
+            "under_merge_rate": 0.0,
+            "hallucination_rate": 0.0,
+            "provenance_completeness": 1.0,
+            "proposed_provenance_completeness": 1.0,
+            "refinement_accuracy": 0.2381,
+            "type_accuracy": 1.0,
+            "category_accuracy": 1.0
+          }
+        },
+        {
+          "temperature": 0.2,
+          "time_seconds": 29.93,
+          "metrics": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "false_positives": 0,
+            "false_negatives": 0,
+            "curation_effort": 1.871,
+            "over_merge_rate": 0.0,
+            "under_merge_rate": 0.0,
+            "hallucination_rate": 0.0,
+            "provenance_completeness": 1.0,
+            "proposed_provenance_completeness": 1.0,
+            "refinement_accuracy": 0.3333,
+            "type_accuracy": 1.0,
+            "category_accuracy": 1.0
+          }
+        },
+        {
+          "temperature": 0.2,
+          "time_seconds": 18.36,
+          "metrics": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "false_positives": 0,
+            "false_negatives": 0,
+            "curation_effort": 1.871,
+            "over_merge_rate": 0.0,
+            "under_merge_rate": 0.0,
+            "hallucination_rate": 0.0,
+            "provenance_completeness": 1.0,
+            "proposed_provenance_completeness": 1.0,
+            "refinement_accuracy": 0.3333,
+            "type_accuracy": 1.0,
+            "category_accuracy": 1.0
+          }
+        }
+      ]
+    },
+    "llm_erd_data": {
+      "status": "success",
+      "time_seconds": 90.01,
+      "n_runs": 3,
+      "temperatures": [
+        0.2,
+        0.2,
+        0.2
+      ],
+      "metrics": {
+        "false_negatives": 0.0,
+        "type_accuracy": 1.0,
+        "over_merge_rate": 0.0,
+        "precision": 1.0,
+        "f1": 1.0,
+        "recall": 1.0,
+        "curation_effort": 1.8495,
+        "hallucination_rate": 0.0,
+        "provenance_completeness": 1.0,
+        "refinement_accuracy": 0.3333,
+        "under_merge_rate": 0.0,
+        "category_accuracy": 1.0,
+        "proposed_provenance_completeness": 1.0,
+        "false_positives": 0.0
+      },
+      "metrics_mean": {
+        "false_negatives": 0.0,
+        "type_accuracy": 1.0,
+        "over_merge_rate": 0.0,
+        "precision": 1.0,
+        "f1": 1.0,
+        "recall": 1.0,
+        "curation_effort": 1.8495,
+        "hallucination_rate": 0.0,
+        "provenance_completeness": 1.0,
+        "refinement_accuracy": 0.3333,
+        "under_merge_rate": 0.0,
+        "category_accuracy": 1.0,
+        "proposed_provenance_completeness": 1.0,
+        "false_positives": 0.0
+      },
+      "metrics_std": {
+        "false_negatives": 0.0,
+        "type_accuracy": 0.0,
+        "over_merge_rate": 0.0,
+        "precision": 0.0,
+        "f1": 0.0,
+        "recall": 0.0,
+        "curation_effort": 0.0304,
+        "hallucination_rate": 0.0,
+        "provenance_completeness": 0.0,
+        "refinement_accuracy": 0.0,
+        "under_merge_rate": 0.0,
+        "category_accuracy": 0.0,
+        "proposed_provenance_completeness": 0.0,
+        "false_positives": 0.0
+      },
+      "runs": [
+        {
+          "temperature": 0.2,
+          "time_seconds": 17.92,
+          "metrics": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "false_positives": 0,
+            "false_negatives": 0,
+            "curation_effort": 1.8065,
+            "over_merge_rate": 0.0,
+            "under_merge_rate": 0.0,
+            "hallucination_rate": 0.0,
+            "provenance_completeness": 1.0,
+            "proposed_provenance_completeness": 1.0,
+            "refinement_accuracy": 0.3333,
+            "type_accuracy": 1.0,
+            "category_accuracy": 1.0
+          }
+        },
+        {
+          "temperature": 0.2,
+          "time_seconds": 30.28,
+          "metrics": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "false_positives": 0,
+            "false_negatives": 0,
+            "curation_effort": 1.871,
+            "over_merge_rate": 0.0,
+            "under_merge_rate": 0.0,
+            "hallucination_rate": 0.0,
+            "provenance_completeness": 1.0,
+            "proposed_provenance_completeness": 1.0,
+            "refinement_accuracy": 0.3333,
+            "type_accuracy": 1.0,
+            "category_accuracy": 1.0
+          }
+        },
+        {
+          "temperature": 0.2,
+          "time_seconds": 21.8,
+          "metrics": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "false_positives": 0,
+            "false_negatives": 0,
+            "curation_effort": 1.871,
+            "over_merge_rate": 0.0,
+            "under_merge_rate": 0.0,
+            "hallucination_rate": 0.0,
+            "provenance_completeness": 1.0,
+            "proposed_provenance_completeness": 1.0,
+            "refinement_accuracy": 0.3333,
+            "type_accuracy": 1.0,
+            "category_accuracy": 1.0
+          }
+        }
+      ]
+    },
+    "llm_erd_data_expert_brief": {
+      "status": "success",
+      "time_seconds": 106.89,
+      "n_runs": 3,
+      "temperatures": [
+        0.2,
+        0.2,
+        0.2
+      ],
+      "metrics": {
+        "false_negatives": 0.0,
+        "type_accuracy": 1.0,
+        "over_merge_rate": 0.0,
+        "precision": 1.0,
+        "f1": 1.0,
+        "recall": 1.0,
+        "curation_effort": 1.7204,
+        "hallucination_rate": 0.0,
+        "provenance_completeness": 1.0,
+        "refinement_accuracy": 0.4762,
+        "under_merge_rate": 0.0,
+        "category_accuracy": 1.0,
+        "proposed_provenance_completeness": 1.0,
+        "false_positives": 0.0
+      },
+      "metrics_mean": {
+        "false_negatives": 0.0,
+        "type_accuracy": 1.0,
+        "over_merge_rate": 0.0,
+        "precision": 1.0,
+        "f1": 1.0,
+        "recall": 1.0,
+        "curation_effort": 1.7204,
+        "hallucination_rate": 0.0,
+        "provenance_completeness": 1.0,
+        "refinement_accuracy": 0.4762,
+        "under_merge_rate": 0.0,
+        "category_accuracy": 1.0,
+        "proposed_provenance_completeness": 1.0,
+        "false_positives": 0.0
+      },
+      "metrics_std": {
+        "false_negatives": 0.0,
+        "type_accuracy": 0.0,
+        "over_merge_rate": 0.0,
+        "precision": 0.0,
+        "f1": 0.0,
+        "recall": 0.0,
+        "curation_effort": 0.0805,
+        "hallucination_rate": 0.0,
+        "provenance_completeness": 0.0,
+        "refinement_accuracy": 0.0389,
+        "under_merge_rate": 0.0,
+        "category_accuracy": 0.0,
+        "proposed_provenance_completeness": 0.0,
+        "false_positives": 0.0
+      },
+      "runs": [
+        {
+          "temperature": 0.2,
+          "time_seconds": 33.07,
+          "metrics": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "false_positives": 0,
+            "false_negatives": 0,
+            "curation_effort": 1.8065,
+            "over_merge_rate": 0.0,
+            "under_merge_rate": 0.0,
+            "hallucination_rate": 0.0,
+            "provenance_completeness": 1.0,
+            "proposed_provenance_completeness": 1.0,
+            "refinement_accuracy": 0.4286,
+            "type_accuracy": 1.0,
+            "category_accuracy": 1.0
+          }
+        },
+        {
+          "temperature": 0.2,
+          "time_seconds": 27.78,
+          "metrics": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "false_positives": 0,
+            "false_negatives": 0,
+            "curation_effort": 1.6129,
+            "over_merge_rate": 0.0,
+            "under_merge_rate": 0.0,
+            "hallucination_rate": 0.0,
+            "provenance_completeness": 1.0,
+            "proposed_provenance_completeness": 1.0,
+            "refinement_accuracy": 0.5238,
+            "type_accuracy": 1.0,
+            "category_accuracy": 1.0
+          }
+        },
+        {
+          "temperature": 0.2,
+          "time_seconds": 26.03,
+          "metrics": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "false_positives": 0,
+            "false_negatives": 0,
+            "curation_effort": 1.7419,
+            "over_merge_rate": 0.0,
+            "under_merge_rate": 0.0,
+            "hallucination_rate": 0.0,
+            "provenance_completeness": 1.0,
+            "proposed_provenance_completeness": 1.0,
+            "refinement_accuracy": 0.4762,
+            "type_accuracy": 1.0,
+            "category_accuracy": 1.0
+          }
+        }
+      ]
+    }
+  }
+}

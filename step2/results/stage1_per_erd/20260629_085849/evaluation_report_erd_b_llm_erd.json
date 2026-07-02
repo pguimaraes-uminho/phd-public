@@ -1,0 +1,354 @@
+{
+  "scenario_name": "Scenario 1: LLM-1 (ERD only)",
+  "target_model": "ERD-B",
+  "n_runs": 3,
+  "metrics_mean": {
+    "false_negatives": 0.0,
+    "type_accuracy": 1.0,
+    "over_merge_rate": 0.0,
+    "precision": 1.0,
+    "f1": 1.0,
+    "recall": 1.0,
+    "curation_effort": 1.9032,
+    "hallucination_rate": 0.0,
+    "provenance_completeness": 1.0,
+    "refinement_accuracy": 0.3016,
+    "under_merge_rate": 0.0,
+    "category_accuracy": 1.0,
+    "proposed_provenance_completeness": 1.0,
+    "false_positives": 0.0
+  },
+  "metrics_std": {
+    "false_negatives": 0.0,
+    "type_accuracy": 0.0,
+    "over_merge_rate": 0.0,
+    "precision": 0.0,
+    "f1": 0.0,
+    "recall": 0.0,
+    "curation_effort": 0.0456,
+    "hallucination_rate": 0.0,
+    "provenance_completeness": 0.0,
+    "refinement_accuracy": 0.0449,
+    "under_merge_rate": 0.0,
+    "category_accuracy": 0.0,
+    "proposed_provenance_completeness": 0.0,
+    "false_positives": 0.0
+  },
+  "runs": [
+    {
+      "temperature": 0.2,
+      "time_seconds": 30.41,
+      "metrics": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "false_positives": 0,
+        "false_negatives": 0,
+        "curation_effort": 1.9677,
+        "over_merge_rate": 0.0,
+        "under_merge_rate": 0.0,
+        "hallucination_rate": 0.0,
+        "provenance_completeness": 1.0,
+        "proposed_provenance_completeness": 1.0,
+        "refinement_accuracy": 0.2381,
+        "type_accuracy": 1.0,
+        "category_accuracy": 1.0
+      }
+    },
+    {
+      "temperature": 0.2,
+      "time_seconds": 29.93,
+      "metrics": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "false_positives": 0,
+        "false_negatives": 0,
+        "curation_effort": 1.871,
+        "over_merge_rate": 0.0,
+        "under_merge_rate": 0.0,
+        "hallucination_rate": 0.0,
+        "provenance_completeness": 1.0,
+        "proposed_provenance_completeness": 1.0,
+        "refinement_accuracy": 0.3333,
+        "type_accuracy": 1.0,
+        "category_accuracy": 1.0
+      }
+    },
+    {
+      "temperature": 0.2,
+      "time_seconds": 18.36,
+      "metrics": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "false_positives": 0,
+        "false_negatives": 0,
+        "curation_effort": 1.871,
+        "over_merge_rate": 0.0,
+        "under_merge_rate": 0.0,
+        "hallucination_rate": 0.0,
+        "provenance_completeness": 1.0,
+        "proposed_provenance_completeness": 1.0,
+        "refinement_accuracy": 0.3333,
+        "type_accuracy": 1.0,
+        "category_accuracy": 1.0
+      }
+    }
+  ],
+  "matching_audit": {
+    "true_positives": {
+      "entities": [
+        "Aircraft",
+        "AircraftType",
+        "Airline",
+        "Airport",
+        "Booking",
+        "Flight",
+        "Passenger"
+      ],
+      "attributes": [
+        "Aircraft.aircraft_reg",
+        "Aircraft.seats_capacity",
+        "AircraftType.manufacturer",
+        "AircraftType.model_name",
+        "AircraftType.type_code",
+        "Airline.carrier_code",
+        "Airline.carrier_name",
+        "Airport.airport_name",
+        "Airport.city",
+        "Airport.country",
+        "Airport.iata_code",
+        "Booking.booking_date",
+        "Booking.booking_ref",
+        "Booking.fare_class",
+        "Booking.pax_id",
+        "Booking.seat",
+        "Flight.arr_datetime",
+        "Flight.dep_datetime",
+        "Flight.dest_iata",
+        "Flight.flight_id",
+        "Flight.flight_no",
+        "Flight.origin_iata",
+        "Flight.status",
+        "Passenger.email",
+        "Passenger.full_name",
+        "Passenger.passport_no"
+      ],
+      "count": 33
+    },
+    "false_positives": {
+      "entities": [],
+      "attributes": [],
+      "count": 0
+    },
+    "false_negatives": {
+      "entities": [],
+      "attributes": [],
+      "count": 0
+    },
+    "refinements": {
+      "correct_matches": [
+        {
+          "source_entity": "Passenger",
+          "gold_canonical": "Passenger",
+          "proposed_canonical": "Passenger"
+        },
+        {
+          "source_entity": "Booking",
+          "gold_canonical": "Booking",
+          "proposed_canonical": "Booking"
+        },
+        {
+          "source_entity": "Flight",
+          "gold_canonical": "Flight",
+          "proposed_canonical": "Flight"
+        },
+        {
+          "source_entity": "Airline",
+          "gold_canonical": "Airline",
+          "proposed_canonical": "Airline"
+        },
+        {
+          "source_entity": "Airport",
+          "gold_canonical": "Airport",
+          "proposed_canonical": "Airport"
+        },
+        {
+          "source_attribute": "Passenger.pax_id",
+          "gold_canonical": "passengerId",
+          "proposed_canonical": "passengerIdentifier"
+        },
+        {
+          "source_attribute": "Passenger.full_name",
+          "gold_canonical": "fullName",
+          "proposed_canonical": "fullName"
+        },
+        {
+          "source_attribute": "Passenger.passport_no",
+          "gold_canonical": "passportNumber",
+          "proposed_canonical": "passportNumber"
+        },
+        {
+          "source_attribute": "Passenger.email",
+          "gold_canonical": "email",
+          "proposed_canonical": "email"
+        },
+        {
+          "source_attribute": "Booking.booking_ref",
+          "gold_canonical": "bookingRef",
+          "proposed_canonical": "bookingReference"
+        },
+        {
+          "source_attribute": "Booking.fare_class",
+          "gold_canonical": "fareClass",
+          "proposed_canonical": "fareClass"
+        },
+        {
+          "source_attribute": "Booking.booking_date",
+          "gold_canonical": "bookingDate",
+          "proposed_canonical": "bookingDate"
+        },
+        {
+          "source_attribute": "Flight.flight_id",
+          "gold_canonical": "flightId",
+          "proposed_canonical": "flightIdentifier"
+        },
+        {
+          "source_attribute": "Flight.flight_no",
+          "gold_canonical": "flightNumber",
+          "proposed_canonical": "flightNumber"
+        },
+        {
+          "source_attribute": "Flight.carrier_code",
+          "gold_canonical": "operatedByAirline",
+          "proposed_canonical": "operatedByAirline"
+        },
+        {
+          "source_attribute": "Airline.country",
+          "gold_canonical": "country",
+          "proposed_canonical": "country"
+        },
+        {
+          "source_attribute": "Aircraft.aircraft_reg",
+          "gold_canonical": "registration",
+          "proposed_canonical": "aircraftRegistration"
+        },
+        {
+          "source_attribute": "Aircraft.seats_capacity",
+          "gold_canonical": "seatsCapacity",
+          "proposed_canonical": "seatsCapacity"
+        },
+        {
+          "source_attribute": "AircraftType.type_code",
+          "gold_canonical": "typeCode",
+          "proposed_canonical": "typeCode"
+        },
+        {
+          "source_attribute": "AircraftType.model_name",
+          "gold_canonical": "modelName",
+          "proposed_canonical": "modelName"
+        },
+        {
+          "source_attribute": "AircraftType.manufacturer",
+          "gold_canonical": "manufacturer",
+          "proposed_canonical": "manufacturer"
+        },
+        {
+          "source_attribute": "Airport.airport_name",
+          "gold_canonical": "airportName",
+          "proposed_canonical": "airportName"
+        },
+        {
+          "source_attribute": "Airport.country",
+          "gold_canonical": "country",
+          "proposed_canonical": "country"
+        }
+      ],
+      "incorrect_matches": [
+        {
+          "source_entity": "Aircraft",
+          "gold_canonical": "Airplane",
+          "proposed_canonical": "Aircraft"
+        },
+        {
+          "source_entity": "AircraftType",
+          "gold_canonical": "AirplaneType",
+          "proposed_canonical": "AircraftType"
+        },
+        {
+          "source_attribute": "Booking.pax_id",
+          "gold_canonical": "madeByPassenger",
+          "proposed_canonical": "booksPassenger"
+        },
+        {
+          "source_attribute": "Booking.flight_id",
+          "gold_canonical": "bookedOnFlight",
+          "proposed_canonical": "isForFlight"
+        },
+        {
+          "source_attribute": "Booking.seat",
+          "gold_canonical": "seatNumber",
+          "proposed_canonical": "seat"
+        },
+        {
+          "source_attribute": "Flight.dep_datetime",
+          "gold_canonical": "departureTime",
+          "proposed_canonical": "departureDateTime"
+        },
+        {
+          "source_attribute": "Flight.arr_datetime",
+          "gold_canonical": "arrivalTime",
+          "proposed_canonical": "arrivalDateTime"
+        },
+        {
+          "source_attribute": "Flight.aircraft_reg",
+          "gold_canonical": "operatedWithAirplane",
+          "proposed_canonical": "usesAircraft"
+        },
+        {
+          "source_attribute": "Flight.origin_iata",
+          "gold_canonical": "departsFromAirport",
+          "proposed_canonical": "hasOriginAirport"
+        },
+        {
+          "source_attribute": "Flight.dest_iata",
+          "gold_canonical": "arrivesAtAirport",
+          "proposed_canonical": "hasDestinationAirport"
+        },
+        {
+          "source_attribute": "Flight.status",
+          "gold_canonical": "flightStatus",
+          "proposed_canonical": "status"
+        },
+        {
+          "source_attribute": "Airline.carrier_code",
+          "gold_canonical": "airlineCode",
+          "proposed_canonical": "carrierCode"
+        },
+        {
+          "source_attribute": "Airline.carrier_name",
+          "gold_canonical": "airlineName",
+          "proposed_canonical": "carrierName"
+        },
+        {
+          "source_attribute": "Aircraft.type_code",
+          "gold_canonical": "hasAirplaneType",
+          "proposed_canonical": "isOfType"
+        },
+        {
+          "source_attribute": "Airport.iata_code",
+          "gold_canonical": "airportCode",
+          "proposed_canonical": "iataCode"
+        },
+        {
+          "source_attribute": "Airport.city",
+          "gold_canonical": "cityName",
+          "proposed_canonical": "city"
+        }
+      ],
+      "correct_count": 23,
+      "incorrect_count": 16
+    }
+  }
+}

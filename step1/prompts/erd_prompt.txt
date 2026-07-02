@@ -1,0 +1,7 @@
+You are a database-design expert. From the information about ONE CSV file below, infer a normalized (3NF) ERD: entities, attributes, primary keys, foreign keys, and relationships with cardinalities. A denormalized CSV may represent several entities — normalize it into the appropriate entities and wire the foreign keys. Use meaningful, singular entity names. Output ONLY valid JSON (no prose, no markdown, no comments) valid against the contract below.
+
+CONTRACT
+{"entities":[{"name":"","primary_key":["..."],"attributes":[{"name":"","data_type":"","is_primary_key":true,"is_foreign_key":false}]}],"relationships":[{"from_entity":"","to_entity":"","from_cardinality":"1","to_cardinality":"0..N","fk_attribute":""}]}
+
+INPUT
+{{DATA_BLOCK}}

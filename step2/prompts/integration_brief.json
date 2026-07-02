@@ -1,0 +1,3 @@
+[
+  "The hard cases for any matcher are the structural and granularity conflicts (status event vs attribute; Location entity vs attribute; AircraftType entity vs attribute), where structural similarity alone is misleading."
+]

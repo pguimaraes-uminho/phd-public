@@ -1,0 +1,185 @@
+{
+  "domain": "airlines",
+  "description": "Cross-ERD integration ground truth for ERD-A and ERD-B. Correspondences are induced by shared canonical concepts in the two per-ERD ground truth models; this file records the induced matches, the coverage gaps, and the genuine conflicts the expert must resolve to produce one integrated ontology. Reference for scoring the cross-ERD task; not a method.",
+  "erd_a": "ground_truth_model_aligned.json",
+  "erd_b": "ground_truth_model_B_aligned.json",
+  "concept_matches": [
+    {
+      "canonical": "Passenger",
+      "erd_a": "Customer",
+      "erd_b": "Passenger",
+      "basis": "shared canonical concept"
+    },
+    {
+      "canonical": "Flight",
+      "erd_a": "Flight",
+      "erd_b": "Flight",
+      "basis": "shared canonical concept"
+    },
+    {
+      "canonical": "Airline",
+      "erd_a": "Airline",
+      "erd_b": "Airline",
+      "basis": "shared canonical concept"
+    },
+    {
+      "canonical": "Airplane",
+      "erd_a": "Airplane",
+      "erd_b": "Aircraft",
+      "basis": "shared canonical concept"
+    },
+    {
+      "canonical": "Airport",
+      "erd_a": "Airport",
+      "erd_b": "Airport",
+      "basis": "shared canonical concept"
+    },
+    {
+      "canonical": "Booking",
+      "erd_a": "Seat",
+      "erd_b": "Booking",
+      "basis": "same relator (Passenger × Flight); A entity Seat / canonical SeatAssignment, integrated name = Booking"
+    }
+  ],
+  "relation_matches": [
+    {
+      "canonical": "operatedByAirline",
+      "erd_a": "operatedByAirline",
+      "erd_b": "operatedByAirline"
+    },
+    {
+      "canonical": "operatedWithAirplane",
+      "erd_a": "operatedWithAirplane",
+      "erd_b": "operatedWithAirplane"
+    },
+    {
+      "canonical": "departsFromAirport",
+      "erd_a": "departsFromAirport",
+      "erd_b": "departsFromAirport"
+    },
+    {
+      "canonical": "arrivesAtAirport",
+      "erd_a": "arrivesAtAirport",
+      "erd_b": "arrivesAtAirport"
+    }
+  ],
+  "unique_to_a": {
+    "concepts": [
+      "CrewMember",
+      "BaggageBelt",
+      "Location",
+      "FlightStatusType",
+      "FlightStatusEvent"
+    ],
+    "note": "A models crew, baggage belts, location-as-entity, and a reified flight-status history that B does not represent."
+  },
+  "unique_to_b": {
+    "concepts": [
+      "AirplaneType"
+    ],
+    "attributes": [
+      "Passenger.email",
+      "Booking.fareClass",
+      "Booking.bookingDate",
+      "AirplaneType.manufacturer",
+      "Airplane.seatsCapacity",
+      "Airline.country",
+      "Airport.country"
+    ],
+    "note": "B normalizes aircraft model into a type entity and adds several descriptive attributes A lacks."
+  },
+  "conflicts": [
+    {
+      "type": "naming",
+      "canonical": "Passenger",
+      "detail": "A: Customer; B: Passenger",
+      "resolution": "canonical concept Passenger"
+    },
+    {
+      "type": "naming",
+      "canonical": "Booking",
+      "detail": "A: SeatAssignment; B: Booking",
+      "resolution": "integrated relator named Booking; SeatAssignment is the ERD-A view"
+    },
+    {
+      "type": "naming",
+      "canonical": "Airline",
+      "detail": "A: airline_code/name; B: carrier_code/carrier_name",
+      "resolution": "airlineCode / airlineName"
+    },
+    {
+      "type": "naming",
+      "canonical": "Airplane",
+      "detail": "A: license_number; B: aircraft_reg",
+      "resolution": "registration"
+    },
+    {
+      "type": "identity",
+      "canonical": "Flight",
+      "detail": "A: natural key (flightNumber, flightDate); B: surrogate flight_id",
+      "resolution": "canonical natural key (flightNumber + departureTime); surrogate kept as a secondary id"
+    },
+    {
+      "type": "identity",
+      "canonical": "Passenger",
+      "detail": "A: natural key passportNumber; B: surrogate pax_id",
+      "resolution": "canonical natural key passportNumber"
+    },
+    {
+      "type": "identity",
+      "canonical": "Booking",
+      "detail": "A: composite key (passenger, flight); B: surrogate booking_ref",
+      "resolution": "relator identified by its participants; surrogate kept as secondary id"
+    },
+    {
+      "type": "granularity",
+      "canonical": "Passenger.name",
+      "detail": "A: firstName + lastName; B: full_name",
+      "resolution": "canonical firstName + lastName; B.full_name is unpacked into them"
+    },
+    {
+      "type": "granularity",
+      "canonical": "Flight.time",
+      "detail": "A: flightDate (date); B: departureTime/arrivalTime (timestamps)",
+      "resolution": "keep departureTime/arrivalTime; flightDate is the date part of departureTime"
+    },
+    {
+      "type": "granularity",
+      "canonical": "AirplaneType",
+      "detail": "A: Airplane.airplane_model (attribute); B: AircraftType (entity)",
+      "resolution": "promote to first-class AirplaneType; A's airplane_model becomes a modelName value of it"
+    },
+    {
+      "type": "structure",
+      "canonical": "FlightStatus",
+      "detail": "A: reified FlightStatusType + FlightStatusEvent (history); B: status attribute (current state)",
+      "resolution": "keep the reified FlightStatusEvent; B.status is the most recent event's status"
+    },
+    {
+      "type": "structure",
+      "canonical": "Location",
+      "detail": "A: Location entity (location_code, city); B: city/country folded into Airport",
+      "resolution": "keep Location as a first-class concept; B's city/country populate it"
+    },
+    {
+      "type": "structure",
+      "canonical": "Booking.seat",
+      "detail": "A: Seat as a reified table; B: seat as a Booking attribute",
+      "resolution": "the relator Booking carries seatNumber as a descriptive attribute"
+    }
+  ],
+  "integrated_concepts": [
+    "Passenger",
+    "Booking",
+    "Flight",
+    "Airline",
+    "Airplane",
+    "AirplaneType",
+    "Airport",
+    "Location",
+    "FlightStatusType",
+    "FlightStatusEvent",
+    "BaggageBelt",
+    "CrewMember"
+  ]
+}
